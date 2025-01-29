@@ -1,0 +1,34 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "custom_liquid_dVFiwr": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<form method=\"post\" action=\"/cart/add\" class=\"customer-payment-form\">\n  <h2>Customer Details</h2>\n  \n  <!-- Customer Name -->\n  <label for=\"customer_name\">Full Name</label>\n  <input type=\"text\" id=\"customer_name\" name=\"properties[Customer Name]\" placeholder=\"Enter your full name\" required>\n  \n  <!-- Customer Email -->\n  <label for=\"customer_email\">Email</label>\n  <input type=\"email\" id=\"customer_email\" name=\"properties[Email]\" placeholder=\"Enter your email\" required>\n  \n  <!-- Customer Phone Number -->\n  <label for=\"customer_phone\">Phone Number</label>\n  <input type=\"tel\" id=\"customer_phone\" name=\"properties[Phone]\" placeholder=\"Enter your phone number\" required>\n  \n  <!-- Customer Address -->\n  <label for=\"customer_address\">Shipping Address</label>\n  <textarea id=\"customer_address\" name=\"properties[Address]\" placeholder=\"Enter your shipping address\" required></textarea>\n  \n  <!-- Payment Amount -->\n  <label for=\"amount\">Payment Amount (in {{ shop.currency }}</label>\n  <input type=\"number\" id=\"amount\" name=\"properties[Amount]\" placeholder=\"Enter payment amount\" required min=\"1\">\n  \n  <!-- Product or Service (hidden if needed) -->\n  <input type=\"hidden\" name=\"id\" value=\"PRODUCT_VARIANT_ID\">\n  \n  <!-- Submit Button -->\n  <button type=\"submit\">Proceed to Payment</button>\n</form>",
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    }
+  },
+  "order": [
+    "main",
+    "custom_liquid_dVFiwr"
+  ]
+}
