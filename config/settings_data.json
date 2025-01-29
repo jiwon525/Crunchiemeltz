@@ -139,6 +139,14 @@
         "settings": {
           "color_scheme": "scheme-1"
         }
+      },
+      "whatsapp": {
+        "type": "whatsapp",
+        "settings": {
+          "show_whatsapp": true,
+          "whatsapp_number": "+6587886944",
+          "whatsapp_msg": "Hello customer! Welcome to CrunchieMeltz."
+        }
       }
     },
     "content_for_index": [],
