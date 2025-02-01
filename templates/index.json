@@ -15,8 +15,8 @@
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "Browse our latest products",
-            "heading_size": "h0"
+            "heading": "<strong>TAKE A SWEET BREAK!</strong>",
+            "heading_size": "hxl"
           }
         },
         "button": {
@@ -39,9 +39,9 @@
         "image": "shopify://shop_images/freshly-baked-homemade-chocolate-brownies.jpg",
         "image_overlay_opacity": 30,
         "image_height": "medium",
-        "desktop_content_position": "bottom-center",
+        "desktop_content_position": "middle-left",
         "show_text_box": false,
-        "desktop_content_alignment": "center",
+        "desktop_content_alignment": "left",
         "color_scheme": "scheme-3",
         "image_behavior": "none",
         "mobile_content_alignment": "center",
