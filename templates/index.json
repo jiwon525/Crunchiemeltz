@@ -94,6 +94,7 @@
     },
     "page_PH66P7": {
       "type": "page",
+      "disabled": true,
       "settings": {
         "page": "facebook-reviews",
         "heading_size": "h2",
