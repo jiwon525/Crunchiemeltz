@@ -1,87 +1,44 @@
-{%- style -%}
-  .section-{{ section.id }}-padding {
-    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
-    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
-  }
-
-  @media screen and (min-width: 750px) {
-    .section-{{ section.id }}-padding {
-      padding-top: {{ section.settings.padding_top }}px;
-      padding-bottom: {{ section.settings.padding_bottom }}px;
-    }
-  }
-{%- endstyle -%}
-
-<div class="main-blog page-width section-{{ section.id }}-padding">
-  <h1 class="title--primary{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
-    {{ blog.title | escape }}
-  </h1>
-  <section class="page-width">
-    <div class="grid grid--2-col">
-      <div class="card">
-        <a
-          href="https://sg.finance.yahoo.com/news/crunchie-meltz-champions-women-leaders-013000250.html"
-          target="_blank"
-          class="full-unstyled-link"
+<section class="page-width">
+  <div class="grid grid--2-col">
+    <div class="card">
+      <a
+        href="https://sg.finance.yahoo.com/news/crunchie-meltz-champions-women-leaders-013000250.html"
+        target="_blank"
+        class="full-unstyled-link"
+      >
+        <img
+          src="https://cdn.shopify.com/s/files/1/0624/4938/5514/files/Crunchie_Meltz_PR_Pic.jpg?v=1743260540"
+          alt="Yahoo Article"
+          width="300"
+          height="200"
+          style="width: 100%; height: auto; border-radius: 8px;"
         >
-          <img
-            src="https://cdn.shopify.com/s/files/1/0624/4938/5514/files/Crunchie_Meltz_PR_Pic.jpg?v=1743260540"
-            alt="Yahoo Article"
-            width="300"
-            height="200"
-            style="width: 100%; height: auto; border-radius: 8px;"
-          >
-          <h3 style="margin-top: 10px;">Crunchie Meltz Champions Women Leaders at Her Courage Leaders Summit 2025</h3>
-        </a>
-      </div>
-
-      <div class="card">
-        <a
-          href="https://vulcanpost.com/newswire/?rkey=20250313AE39325&filter=25525"
-          target="_blank"
-          class="full-unstyled-link"
-        >
-          <img
-            src="https://cdn.shopify.com/s/files/1/0624/4938/5514/files/Crunchie_Meltz_PR_Pic.jpg?v=1743260540"
-            alt="Vulcan Post"
-            width="300"
-            height="200"
-            style="width: 100%; height: auto; border-radius: 8px;"
-          >
-          <h3 style="margin-top: 10px;">Crunchie Meltz Champions Women Leaders at Her Courage Leaders Summit 2025</h3>
-        </a>
-      </div>
+        <h3 style="margin-top: 10px;">Crunchie Meltz Champions Women Leaders at Her Courage Leaders Summit 2025</h3>
+      </a>
     </div>
-  </section>
-</div>
+
+    <div class="card">
+      <a
+        href="https://vulcanpost.com/newswire/?rkey=20250313AE39325&filter=25525"
+        target="_blank"
+        class="full-unstyled-link"
+      >
+        <img
+          src="https://cdn.shopify.com/s/files/1/0624/4938/5514/files/Crunchie_Meltz_PR_Pic.jpg?v=1743260540"
+          alt="Vulcan Post"
+          width="300"
+          height="200"
+          style="width: 100%; height: auto; border-radius: 8px;"
+        >
+        <h3 style="margin-top: 10px;">Crunchie Meltz Champions Women Leaders at Her Courage Leaders Summit 2025</h3>
+      </a>
+    </div>
+  </div>
+</section>
 {% schema %}
 {
   "name": "Custom News Articles",
   "settings": [
-    {
-      "type": "header",
-      "content": "t:sections.main-blog.settings.header.content"
-    },
-    {
-      "type": "range",
-      "id": "padding_top",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "t:sections.all.padding.padding_top",
-      "default": 36
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "t:sections.all.padding.padding_bottom",
-      "default": 36
-    }
   ],
   "presets":[
         {
