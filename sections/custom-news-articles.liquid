@@ -11,44 +11,49 @@
     }
   }
 {%- endstyle -%}
-<section class="page-width">
-  <div class="grid grid--2-col">
-    <div class="card">
-      <a
-        href="https://sg.finance.yahoo.com/news/crunchie-meltz-champions-women-leaders-013000250.html"
-        target="_blank"
-        class="full-unstyled-link"
-      >
-        <img
-          src="https://cdn.shopify.com/s/files/1/0624/4938/5514/files/Crunchie_Meltz_PR_Pic.jpg?v=1743260540"
-          alt="Yahoo Article"
-          width="300"
-          height="200"
-          style="width: 100%; height: auto; border-radius: 8px;"
-        >
-        <h3 style="margin-top: 10px;">Crunchie Meltz Champions Women Leaders at Her Courage Leaders Summit 2025</h3>
-      </a>
-    </div>
 
-    <div class="card">
-      <a
-        href="https://vulcanpost.com/newswire/?rkey=20250313AE39325&filter=25525"
-        target="_blank"
-        class="full-unstyled-link"
-      >
-        <img
-          src="https://cdn.shopify.com/s/files/1/0624/4938/5514/files/Crunchie_Meltz_PR_Pic.jpg?v=1743260540"
-          alt="Vulcan Post"
-          width="300"
-          height="200"
-          style="width: 100%; height: auto; border-radius: 8px;"
+<div class="main-blog page-width section-{{ section.id }}-padding">
+  <h1 class="title--primary{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+    {{ blog.title | escape }}
+  </h1>
+  <section class="page-width">
+    <div class="grid grid--2-col">
+      <div class="card">
+        <a
+          href="https://sg.finance.yahoo.com/news/crunchie-meltz-champions-women-leaders-013000250.html"
+          target="_blank"
+          class="full-unstyled-link"
         >
-        <h3 style="margin-top: 10px;">Crunchie Meltz Champions Women Leaders at Her Courage Leaders Summit 2025</h3>
-      </a>
-    </div>
-  </div>
-</section>
+          <img
+            src="https://cdn.shopify.com/s/files/1/0624/4938/5514/files/Crunchie_Meltz_PR_Pic.jpg?v=1743260540"
+            alt="Yahoo Article"
+            width="300"
+            height="200"
+            style="width: 100%; height: auto; border-radius: 8px;"
+          >
+          <h3 style="margin-top: 10px;">Crunchie Meltz Champions Women Leaders at Her Courage Leaders Summit 2025</h3>
+        </a>
+      </div>
 
+      <div class="card">
+        <a
+          href="https://vulcanpost.com/newswire/?rkey=20250313AE39325&filter=25525"
+          target="_blank"
+          class="full-unstyled-link"
+        >
+          <img
+            src="https://cdn.shopify.com/s/files/1/0624/4938/5514/files/Crunchie_Meltz_PR_Pic.jpg?v=1743260540"
+            alt="Vulcan Post"
+            width="300"
+            height="200"
+            style="width: 100%; height: auto; border-radius: 8px;"
+          >
+          <h3 style="margin-top: 10px;">Crunchie Meltz Champions Women Leaders at Her Courage Leaders Summit 2025</h3>
+        </a>
+      </div>
+    </div>
+  </section>
+</div>
 {% schema %}
 {
   "name": "Custom News Articles",
