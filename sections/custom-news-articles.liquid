@@ -1,6 +1,38 @@
+<section class="page-width">
+  <div class="grid grid--2-col">
+    {% assign articles = "[ 
+        { 
+          'title': 'First Article Title', 
+          'image': 'https://example.com/image1.jpg', 
+          'link': 'https://example.com/article1' 
+        }, 
+        { 
+          'title': 'Second Article Title', 
+          'image': 'https://example.com/image2.jpg', 
+          'link': 'https://example.com/article2' 
+        } 
+      ]"
+      | parse_json
+    %}
+
+    {% for article in articles %}
+      <div class="card">
+        <a href="{{ article.link }}" target="_blank" class="full-unstyled-link">
+          <img
+            src="{{ article.image }}"
+            alt="{{ article.title }}"
+            style="width: 100%; height: auto; border-radius: 8px;"
+          >
+          <h3 style="margin-top: 10px;">{{ article.title }}</h3>
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
 {% schema %}
-  {
-    "name": "Section name",
-    "settings": []
-  }
+{
+  "name": "Section name",
+  "settings": []
+}
 {% endschema %}
