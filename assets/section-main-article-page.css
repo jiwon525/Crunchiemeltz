@@ -20,7 +20,7 @@
 }
 .news-articles .image-wrapper {
   width: 100%;
-  height: 150px; /* You can adjust this */
+  height: 50px; /* You can adjust this */
   background-color: #fff;
   display: flex;
   align-items: center;
