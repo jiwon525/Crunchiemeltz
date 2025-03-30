@@ -69,12 +69,33 @@
           "settings": {
             "logo": "shopify://shop_images/logo8.png"
           }
+        },
+        "logo_czTUBX": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/huvle.jpg"
+          }
+        },
+        "logo_bTtczG": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/linetoday.png"
+          }
+        },
+        "logo_GznLc8": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/bastille.png"
+          }
         }
       },
       "block_order": [
         "logo_XKC6fG",
         "logo_VLrewA",
-        "logo_RDJfEV"
+        "logo_RDJfEV",
+        "logo_czTUBX",
+        "logo_bTtczG",
+        "logo_GznLc8"
       ],
       "settings": {}
     },
