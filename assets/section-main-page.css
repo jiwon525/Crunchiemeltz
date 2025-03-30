@@ -7,9 +7,6 @@
 }
 .news-header {
   max-width: 72rem; /* or 1160px — same as blog/main layout */
-  margin-left: auto;
-  margin-right: auto;
-  text-align: left;
 }
 
 @media screen and (min-width: 750px) {
