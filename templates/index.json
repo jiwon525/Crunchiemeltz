@@ -49,6 +49,35 @@
         "show_text_below": false
       }
     },
+    "as_featured_on_VyC3Jh": {
+      "type": "as-featured-on",
+      "blocks": {
+        "logo_XKC6fG": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/logo9.png"
+          }
+        },
+        "logo_VLrewA": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/logo6.png"
+          }
+        },
+        "logo_RDJfEV": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/logo8.png"
+          }
+        }
+      },
+      "block_order": [
+        "logo_XKC6fG",
+        "logo_VLrewA",
+        "logo_RDJfEV"
+      ],
+      "settings": {}
+    },
     "featured_collection": {
       "type": "featured-collection",
       "settings": {
@@ -91,23 +120,12 @@
       "settings": {
         "include_margins": true
       }
-    },
-    "page_PH66P7": {
-      "type": "page",
-      "disabled": true,
-      "settings": {
-        "page": "facebook-reviews",
-        "heading_size": "h2",
-        "color_scheme": "",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
     }
   },
   "order": [
     "image_banner",
+    "as_featured_on_VyC3Jh",
     "featured_collection",
-    "1732460891c594b38a",
-    "page_PH66P7"
+    "1732460891c594b38a"
   ]
 }
