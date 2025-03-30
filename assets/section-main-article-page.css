@@ -6,9 +6,6 @@
 }
 .news-header {
   max-width: 72rem; 
-  margin-left: auto;
-  margin-right: auto;
-  text-align: left;
 }
 .news-articles .card-wrapper {
   width: 100%;
