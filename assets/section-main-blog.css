@@ -4,6 +4,12 @@
   column-gap: var(--grid-mobile-horizontal-spacing);
   row-gap: var(--grid-mobile-vertical-spacing);
 }
+.news-header {
+  max-width: 72rem; /* or 1160px — same as blog/main layout */
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+}
 
 .blog-articles .card-wrapper {
   width: 100%;
