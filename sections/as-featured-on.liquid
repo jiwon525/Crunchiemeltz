@@ -1,6 +1,73 @@
-{% schema %}
-  {
-    "name": "Section name",
-    "settings": []
+{% comment %}
+  As Featured On Section — Fully Editable
+  User uploads logo images from theme editor
+{% endcomment %}
+
+<style>
+  .featured-on-section {
+    padding: 4rem 0;
   }
+
+  .featured-on-header {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  .featured-logo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 2rem;
+    align-items: center;
+    justify-items: center;
+  }
+
+  .featured-logo-grid img {
+    width: 120px;
+    height: auto;
+    object-fit: contain;
+  }
+</style>
+
+<section class="page-width featured-on-section">
+  <h2 class="featured-on-header scroll-trigger animate--fade-in">As Featured On:</h2>
+  <div class="featured-logo-grid">
+    {% for block in section.blocks %}
+      {% if block.settings.logo != blank %}
+        <div class="featured-logo">
+          <img src="{{ block.settings.logo | image_url }}" alt="Featured Logo {{ forloop.index }}" loading="lazy">
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "As Featured On",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 12,
+  "settings": [],
+  "blocks": [
+    {
+      "type": "logo",
+      "name": "Logo",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "logo",
+          "label": "Upload logo"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "As Featured On",
+      "category": "Custom"
+    }
+  ]
+}
 {% endschema %}
