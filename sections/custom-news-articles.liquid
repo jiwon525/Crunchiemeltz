@@ -15,6 +15,10 @@
 {%- endstyle -%}
 
 <div class="page-width section-{{ section.id }}-padding">
+  <h1 class="news-header scroll-trigger animate--fade-in">
+    {{ page.title | escape }}
+  </h1>
+
   <div class="news-articles">
     <div class="card-wrapper scroll-trigger animate--slide-in" data-cascade style="--animation-order: 1;">
       <a
@@ -48,7 +52,7 @@
       "type": "range",
       "id": "padding_top",
       "min": 0,
-      "max": 0,
+      "max": 100,
       "step": 4,
       "unit": "px",
       "label": "t:sections.all.padding.padding_top",
