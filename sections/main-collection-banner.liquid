@@ -6,9 +6,6 @@
     .collection-hero--with-image .collection-hero__inner {
       padding-bottom: calc({{ settings.media_shadow_vertical_offset | at_least: 0 }}px + 2rem);
     }
-    .collection-hero_title {
-      padding-top: {{ section.settings.padding_top }}px;
-    }
   }
 {%- endstyle -%}
 
@@ -53,16 +50,6 @@
   "name": "t:sections.main-collection-banner.name",
   "class": "section",
   "settings": [
-    {
-      "type": "range",
-      "id": "padding_top",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "t:sections.all.padding.padding_top",
-      "default": 36
-    },
     {
       "type": "paragraph",
       "content": "t:sections.main-collection-banner.settings.paragraph.content"
