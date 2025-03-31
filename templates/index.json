@@ -49,6 +49,21 @@
         "show_text_below": false
       }
     },
+    "1732460891c594b38a": {
+      "type": "apps",
+      "blocks": {
+        "google_reviews_plus_app_block_CPMeGB": {
+          "type": "shopify://apps/rocket-google-reviews/blocks/app-block/d11c8893-a181-4aff-a280-7446d42cec3b",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "google_reviews_plus_app_block_CPMeGB"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
     "as_featured_on_VyC3Jh": {
       "type": "as-featured-on",
       "blocks": {
@@ -97,7 +112,9 @@
         "logo_bTtczG",
         "logo_GznLc8"
       ],
-      "settings": {}
+      "settings": {
+        "header_text": "As Featured On:"
+      }
     },
     "featured_collection": {
       "type": "featured-collection",
@@ -127,26 +144,18 @@
         "padding_bottom": 100
       }
     },
-    "1732460891c594b38a": {
-      "type": "apps",
-      "blocks": {
-        "google_reviews_plus_app_block_CPMeGB": {
-          "type": "shopify://apps/rocket-google-reviews/blocks/app-block/d11c8893-a181-4aff-a280-7446d42cec3b",
-          "settings": {}
-        }
-      },
-      "block_order": [
-        "google_reviews_plus_app_block_CPMeGB"
-      ],
+    "as_featured_on_JjNrwe": {
+      "type": "as-featured-on",
       "settings": {
-        "include_margins": true
+        "header_text": "Trusted Partners & Clients:"
       }
     }
   },
   "order": [
     "image_banner",
+    "1732460891c594b38a",
     "as_featured_on_VyC3Jh",
     "featured_collection",
-    "1732460891c594b38a"
+    "as_featured_on_JjNrwe"
   ]
 }
