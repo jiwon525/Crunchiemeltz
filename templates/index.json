@@ -159,10 +159,16 @@
             "logo": "shopify://shop_images/Class-Living-Main-Logo.png"
           }
         },
-        "logo_n3drWD": {
+        "logo_qkkDFq": {
           "type": "logo",
           "settings": {
-            "logo": "shopify://shop_images/propnex_logo_new.png"
+            "logo": "shopify://shop_images/pngfind.com-realtor-logo-png-315776.png"
+          }
+        },
+        "logo_76wwkp": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/HomeMatch-removebg-preview.png"
           }
         },
         "logo_AYcHKH": {
@@ -171,19 +177,34 @@
             "logo": "shopify://shop_images/FullGospel.jpg"
           }
         },
-        "logo_qkkDFq": {
+        "logo_AKwHiN": {
           "type": "logo",
           "settings": {
-            "logo": "shopify://shop_images/pngfind.com-realtor-logo-png-315776.png"
+            "logo": "shopify://shop_images/Huttons-Logo.webp"
+          }
+        },
+        "logo_UHzX6q": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/THinkbox-removebg-preview.png"
+          }
+        },
+        "logo_n3drWD": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/propnex_logo_new.png"
           }
         }
       },
       "block_order": [
         "logo_YeywqF",
         "logo_FyTkdj",
-        "logo_n3drWD",
+        "logo_qkkDFq",
+        "logo_76wwkp",
         "logo_AYcHKH",
-        "logo_qkkDFq"
+        "logo_AKwHiN",
+        "logo_UHzX6q",
+        "logo_n3drWD"
       ],
       "settings": {
         "header_text": "Trusted Partners & Clients:"
