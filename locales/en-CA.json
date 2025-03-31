@@ -59,7 +59,7 @@
         "shipping_label": "Store Pickup"
       },
       "shipping": {
-        "delivery_title": "Store Pickup",
+        "delivery_title": "Below is Store Pickup address",
         "waiting_on_rate_notice": "Please wait while we fetch available pickup rates...",
         "no_rates_for_cart_or_destination_notice": "Pickup is not available for your cart or destination.",
         "no_rates_for_country_notice": "We do not offer pickups in {{ country }}.",
@@ -68,7 +68,7 @@
       "payment": {
         "same_billing_address_label": "Please use the option below ⬇"
       },
-      "shipping_title": "Store Pickup [Below is pick up address]"
+      "shipping_title": "Store Pickup"
     }
   }
 }
