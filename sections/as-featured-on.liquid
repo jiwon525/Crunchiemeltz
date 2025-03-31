@@ -51,11 +51,18 @@
 
 {% schema %}
 {
-  "name": "As Featured On",
+  "name": "Featured Logos Grid",
   "tag": "section",
   "class": "section",
   "max_blocks": 12,
-  "settings": [],
+  "settings": [
+    {
+      "type": "text",
+      "id": "header_text",
+      "label": "Section Header",
+      "default": "As Featured On:"
+    }
+  ],
   "blocks": [
     {
       "type": "logo",
@@ -71,7 +78,7 @@
   ],
   "presets": [
     {
-      "name": "As Featured On",
+      "name": "Featured Logos Grid",
       "category": "Custom"
     }
   ]
