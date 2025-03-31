@@ -537,7 +537,10 @@
   "shopify": {
     "checkout": {
       "contact": {
-        "optional_phone_label": "Phone (required)"
+        "optional_phone_label": "Phone (required)",
+        "contact_method_title": "Contact number:",
+        "email_or_phone_label": "Please enter you phone number",
+        "email_or_phone_placeholder": "Please enter you phone number"
       }
     }
   }
