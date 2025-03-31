@@ -1,6 +1,6 @@
 {% comment %}
   As Featured On Section — Fully Editable
-  User uploads logo images from theme editor
+  User uploads logo images and optional text from theme editor
 {% endcomment %}
 
 <style>
@@ -30,7 +30,7 @@
 </style>
 
 <section class="page-width featured-on-section">
-  <h2 class="featured-on-header scroll-trigger animate--fade-in">As Featured On:</h2>
+  <h2 class="featured-on-header scroll-trigger animate--fade-in">{{ section.settings.header_text }}</h2>
   <div class="featured-logo-grid">
     {% for block in section.blocks %}
       {% if block.settings.logo != blank %}
