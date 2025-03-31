@@ -146,6 +146,45 @@
     },
     "as_featured_on_JjNrwe": {
       "type": "as-featured-on",
+      "blocks": {
+        "logo_YeywqF": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/plogo-100.jpg"
+          }
+        },
+        "logo_FyTkdj": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/Class-Living-Main-Logo.png"
+          }
+        },
+        "logo_n3drWD": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/propnex_logo_new.png"
+          }
+        },
+        "logo_AYcHKH": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/FullGospel.jpg"
+          }
+        },
+        "logo_qkkDFq": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/pngfind.com-realtor-logo-png-315776.png"
+          }
+        }
+      },
+      "block_order": [
+        "logo_YeywqF",
+        "logo_FyTkdj",
+        "logo_n3drWD",
+        "logo_AYcHKH",
+        "logo_qkkDFq"
+      ],
       "settings": {
         "header_text": "Trusted Partners & Clients:"
       }
