@@ -68,7 +68,7 @@
       "payment": {
         "same_billing_address_label": "Please use the option below ⬇"
       },
-      "shipping_title": "Store Pickup"
+      "shipping_title": "Store Pickup [Below is pick up address]"
     }
   }
 }
