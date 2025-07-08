@@ -260,9 +260,10 @@
                           {{- 'icon-minus.svg' | inline_asset_content -}}
                         </span>
                       </button>
-                      
+
                       {% assign min_quantity = product.metafields.wholesale.minimum_quantity %}
                       {% assign box_quantity = product.metafields.wholesale.box_quantity %}
+                      {% assign bite_sizes = product.metafields.custom.bite_sizes %}
                       <input
                         class="quantity__input"
                         type="number"
