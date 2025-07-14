@@ -37,8 +37,8 @@
       ],
       "settings": {
         "image": "shopify://shop_images/CookieCrundh_layer_33442bb6-adf0-4f4a-9146-9815af2c088d.jpg",
-        "image_overlay_opacity": 30,
-        "image_height": "medium",
+        "image_overlay_opacity": 10,
+        "image_height": "small",
         "desktop_content_position": "middle-left",
         "show_text_box": false,
         "desktop_content_alignment": "left",
