@@ -36,7 +36,8 @@
         "button"
       ],
       "settings": {
-        "image": "shopify://shop_images/CookieCrundh_layer_b27dea1d-6584-4a1b-8f7a-338804d9c173.jpg",
+        "image": "shopify://shop_images/CookieCrundh_layer_330b39ee-dbb9-4b2f-86b0-c8f1312c4cd8.jpg",
+        "image_2": "shopify://shop_images/New_SmoreOreo.jpg",
         "image_overlay_opacity": 10,
         "image_height": "medium",
         "desktop_content_position": "middle-left",
