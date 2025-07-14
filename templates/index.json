@@ -44,9 +44,9 @@
         "desktop_content_alignment": "left",
         "color_scheme": "scheme-3",
         "image_behavior": "none",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": false,
-        "show_text_below": false
+        "mobile_content_alignment": "right",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
       }
     },
     "1732460891c594b38a": {
