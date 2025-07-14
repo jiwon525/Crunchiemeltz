@@ -37,7 +37,6 @@
       ],
       "settings": {
         "image": "shopify://shop_images/CookieCrundh_layer_330b39ee-dbb9-4b2f-86b0-c8f1312c4cd8.jpg",
-        "image_2": "shopify://shop_images/New_SmoreOreo.jpg",
         "image_overlay_opacity": 10,
         "image_height": "medium",
         "desktop_content_position": "middle-left",
@@ -46,7 +45,7 @@
         "color_scheme": "scheme-1",
         "image_behavior": "none",
         "mobile_content_alignment": "left",
-        "stack_images_on_mobile": false,
+        "stack_images_on_mobile": true,
         "show_text_below": true
       }
     },
