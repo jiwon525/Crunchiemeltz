@@ -15,7 +15,7 @@
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "<strong>TAKE A SWEET BREAK!</strong>",
+            "heading": "",
             "heading_size": "hxl"
           }
         },
@@ -36,7 +36,7 @@
         "button"
       ],
       "settings": {
-        "image": "shopify://shop_images/BTO2.jpg",
+        "image": "shopify://shop_images/CookieCrundh_layer_64b27ed2-6e7a-4066-b968-bc15c0a892ef.jpg",
         "image_overlay_opacity": 30,
         "image_height": "medium",
         "desktop_content_position": "middle-left",
