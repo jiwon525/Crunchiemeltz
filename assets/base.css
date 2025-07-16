@@ -2543,6 +2543,10 @@ input[type='checkbox'] {
   height: 44px;
 }
 
+.social__item .svg-wrapper {
+  width: 44px;
+  height: 44px;
+}
 .header__icon::after {
   content: none;
 }
