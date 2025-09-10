@@ -202,6 +202,50 @@
       "settings": {
         "header_text": "Trusted Partners & Clients:"
       }
+    },
+    "video_carousel_GEAnkV": {
+      "type": "video-carousel",
+      "blocks": {
+        "carousel_video_3jwKWf": {
+          "type": "carousel_video",
+          "settings": {
+            "media": ""
+          }
+        },
+        "carousel_video_z6McmQ": {
+          "type": "carousel_video",
+          "settings": {
+            "media": ""
+          }
+        }
+      },
+      "block_order": [
+        "carousel_video_3jwKWf",
+        "carousel_video_z6McmQ"
+      ],
+      "name": "Videos Slider",
+      "settings": {
+        "section_heading": "Videos Slider",
+        "heading_alignment": "center",
+        "heading_size": "medium",
+        "full_width": false,
+        "section_bg_color": "#ffffff",
+        "section_padding_top": 40,
+        "section_padding_bottom": 40,
+        "auto_slide": true,
+        "auto_slide_speed": 6000,
+        "show_arrows": true,
+        "arrow_shape": "circle",
+        "arrow_bg_color": "#000000",
+        "visible_slides": 4,
+        "visible_mobile": 1,
+        "image_shape": "circle",
+        "image_size": "small",
+        "media_size": "medium",
+        "media_design": "adapt",
+        "media_shadow": false,
+        "testimonial_name_size": 20
+      }
     }
   },
   "order": [
@@ -209,6 +253,7 @@
     "1732460891c594b38a",
     "as_featured_on_VyC3Jh",
     "featured_collection",
-    "as_featured_on_JjNrwe"
+    "as_featured_on_JjNrwe",
+    "video_carousel_GEAnkV"
   ]
 }
