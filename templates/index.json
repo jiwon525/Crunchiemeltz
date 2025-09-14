@@ -202,6 +202,71 @@
       "settings": {
         "header_text": "Trusted Partners & Clients:"
       }
+    },
+    "video_carousel_aQgK4L": {
+      "type": "video-carousel",
+      "blocks": {
+        "carousel_video_qa4eQT": {
+          "type": "carousel_video",
+          "settings": {
+            "media": "https://cdn.shopify.com/videos/c/o/v/b05443156c5e4b6cb84ce68e2ba375bc.mov"
+          }
+        },
+        "carousel_video_9eQGNB": {
+          "type": "carousel_video",
+          "settings": {
+            "media": "https://cdn.shopify.com/videos/c/o/v/b05443156c5e4b6cb84ce68e2ba375bc.mov"
+          }
+        },
+        "carousel_video_eT4HJe": {
+          "type": "carousel_video",
+          "settings": {
+            "media": "https://cdn.shopify.com/videos/c/o/v/ac21774d6b964860b238cc7cc0809ef9.mov"
+          }
+        },
+        "carousel_video_zPHxmV": {
+          "type": "carousel_video",
+          "settings": {
+            "media": "https://cdn.shopify.com/videos/c/o/v/68fd8dc518434440a05095a8450f5817.mov"
+          }
+        },
+        "carousel_video_UYac6K": {
+          "type": "carousel_video",
+          "settings": {
+            "media": "https://cdn.shopify.com/videos/c/o/v/cb8191ff965043968d402acabe8289ab.mov"
+          }
+        }
+      },
+      "block_order": [
+        "carousel_video_qa4eQT",
+        "carousel_video_9eQGNB",
+        "carousel_video_eT4HJe",
+        "carousel_video_zPHxmV",
+        "carousel_video_UYac6K"
+      ],
+      "name": "Videos Slider",
+      "settings": {
+        "section_heading": "Videos Slider",
+        "heading_alignment": "center",
+        "heading_size": "medium",
+        "full_width": false,
+        "section_bg_color": "#ffffff",
+        "section_padding_top": 40,
+        "section_padding_bottom": 40,
+        "auto_slide": true,
+        "auto_slide_speed": 6000,
+        "show_arrows": true,
+        "arrow_shape": "circle",
+        "arrow_bg_color": "#000000",
+        "visible_slides": 4,
+        "visible_mobile": 1,
+        "image_shape": "circle",
+        "image_size": "small",
+        "media_size": "medium",
+        "media_design": "adapt",
+        "media_shadow": false,
+        "testimonial_name_size": 20
+      }
     }
   },
   "order": [
@@ -209,6 +274,7 @@
     "1732460891c594b38a",
     "as_featured_on_VyC3Jh",
     "featured_collection",
-    "as_featured_on_JjNrwe"
+    "as_featured_on_JjNrwe",
+    "video_carousel_aQgK4L"
   ]
 }
