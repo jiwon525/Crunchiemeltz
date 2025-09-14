@@ -246,7 +246,7 @@
       ],
       "name": "Videos Slider",
       "settings": {
-        "section_heading": "Videos Slider",
+        "section_heading": "",
         "heading_alignment": "center",
         "heading_size": "medium",
         "full_width": false,
