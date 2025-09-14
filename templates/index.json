@@ -206,12 +206,6 @@
     "video_carousel_aQgK4L": {
       "type": "video-carousel",
       "blocks": {
-        "carousel_video_qa4eQT": {
-          "type": "carousel_video",
-          "settings": {
-            "media": "https://cdn.shopify.com/videos/c/o/v/a252542cefba454d9ccbda46beabb1eb.mov"
-          }
-        },
         "carousel_video_9eQGNB": {
           "type": "carousel_video",
           "settings": {
@@ -230,6 +224,12 @@
             "media": "https://cdn.shopify.com/videos/c/o/v/68fd8dc518434440a05095a8450f5817.mov"
           }
         },
+        "carousel_video_qa4eQT": {
+          "type": "carousel_video",
+          "settings": {
+            "media": "https://cdn.shopify.com/videos/c/o/v/a252542cefba454d9ccbda46beabb1eb.mov"
+          }
+        },
         "carousel_video_UYac6K": {
           "type": "carousel_video",
           "settings": {
@@ -238,10 +238,10 @@
         }
       },
       "block_order": [
-        "carousel_video_qa4eQT",
         "carousel_video_9eQGNB",
         "carousel_video_eT4HJe",
         "carousel_video_zPHxmV",
+        "carousel_video_qa4eQT",
         "carousel_video_UYac6K"
       ],
       "name": "Videos Slider",
