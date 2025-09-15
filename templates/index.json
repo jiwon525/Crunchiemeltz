@@ -253,7 +253,7 @@
         "section_bg_color": "#ffffff",
         "section_padding_top": 40,
         "section_padding_bottom": 40,
-        "auto_slide": true,
+        "auto_slide": false,
         "auto_slide_speed": 6000,
         "auto_play_videos": false,
         "show_arrows": true,
