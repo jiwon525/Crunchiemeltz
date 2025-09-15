@@ -255,6 +255,7 @@
         "section_padding_bottom": 40,
         "auto_slide": true,
         "auto_slide_speed": 6000,
+        "auto_play_videos": false,
         "show_arrows": true,
         "arrow_shape": "circle",
         "arrow_bg_color": "#000000",
