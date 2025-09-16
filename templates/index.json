@@ -39,7 +39,7 @@
         "image": "shopify://shop_images/CookieCrundh_layer_330b39ee-dbb9-4b2f-86b0-c8f1312c4cd8.jpg",
         "image_overlay_opacity": 10,
         "image_height": "adapt",
-        "desktop_content_position": "middle-center",
+        "desktop_content_position": "middle-left",
         "show_text_box": false,
         "desktop_content_alignment": "left",
         "color_scheme": "scheme-1",
@@ -144,65 +144,6 @@
         "padding_bottom": 100
       }
     },
-    "as_featured_on_JjNrwe": {
-      "type": "as-featured-on",
-      "blocks": {
-        "logo_YBrnMN": {
-          "type": "logo",
-          "settings": {
-            "logo": "shopify://shop_images/era-real-estate-seeklogo.svg"
-          }
-        },
-        "logo_YeywqF": {
-          "type": "logo",
-          "settings": {
-            "logo": "shopify://shop_images/plogo-100.jpg"
-          }
-        },
-        "logo_FyTkdj": {
-          "type": "logo",
-          "settings": {
-            "logo": "shopify://shop_images/Class-Living-Main-Logo.png"
-          }
-        },
-        "logo_76wwkp": {
-          "type": "logo",
-          "settings": {
-            "logo": "shopify://shop_images/HomeMatch-removebg-preview.png"
-          }
-        },
-        "logo_AYcHKH": {
-          "type": "logo",
-          "settings": {
-            "logo": "shopify://shop_images/FullGospel.jpg"
-          }
-        },
-        "logo_jn8PDm": {
-          "type": "logo",
-          "settings": {
-            "logo": "shopify://shop_images/huttond.png"
-          }
-        },
-        "logo_UHzX6q": {
-          "type": "logo",
-          "settings": {
-            "logo": "shopify://shop_images/THinkbox-removebg-preview.png"
-          }
-        }
-      },
-      "block_order": [
-        "logo_YBrnMN",
-        "logo_YeywqF",
-        "logo_FyTkdj",
-        "logo_76wwkp",
-        "logo_AYcHKH",
-        "logo_jn8PDm",
-        "logo_UHzX6q"
-      ],
-      "settings": {
-        "header_text": "Trusted Partners & Clients:"
-      }
-    },
     "video_carousel_aQgK4L": {
       "type": "video-carousel",
       "blocks": {
@@ -267,6 +208,65 @@
         "media_design": "adapt",
         "media_shadow": false,
         "testimonial_name_size": 20
+      }
+    },
+    "as_featured_on_JjNrwe": {
+      "type": "as-featured-on",
+      "blocks": {
+        "logo_YBrnMN": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/era-real-estate-seeklogo.svg"
+          }
+        },
+        "logo_YeywqF": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/plogo-100.jpg"
+          }
+        },
+        "logo_FyTkdj": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/Class-Living-Main-Logo.png"
+          }
+        },
+        "logo_76wwkp": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/HomeMatch-removebg-preview.png"
+          }
+        },
+        "logo_AYcHKH": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/FullGospel.jpg"
+          }
+        },
+        "logo_jn8PDm": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/huttond.png"
+          }
+        },
+        "logo_UHzX6q": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/THinkbox-removebg-preview.png"
+          }
+        }
+      },
+      "block_order": [
+        "logo_YBrnMN",
+        "logo_YeywqF",
+        "logo_FyTkdj",
+        "logo_76wwkp",
+        "logo_AYcHKH",
+        "logo_jn8PDm",
+        "logo_UHzX6q"
+      ],
+      "settings": {
+        "header_text": "Trusted Partners & Clients:"
       }
     }
   },
