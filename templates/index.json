@@ -38,8 +38,8 @@
       "settings": {
         "image": "shopify://shop_images/CookieCrundh_layer_330b39ee-dbb9-4b2f-86b0-c8f1312c4cd8.jpg",
         "image_overlay_opacity": 10,
-        "image_height": "medium",
-        "desktop_content_position": "middle-left",
+        "image_height": "adapt",
+        "desktop_content_position": "middle-center",
         "show_text_box": false,
         "desktop_content_alignment": "left",
         "color_scheme": "scheme-1",
@@ -275,7 +275,7 @@
     "1732460891c594b38a",
     "as_featured_on_VyC3Jh",
     "featured_collection",
-    "as_featured_on_JjNrwe",
-    "video_carousel_aQgK4L"
+    "video_carousel_aQgK4L",
+    "as_featured_on_JjNrwe"
   ]
 }
