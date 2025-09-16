@@ -543,9 +543,15 @@
         "email_or_phone_placeholder": "Please enter you phone number"
       },
       "marketing": {
-        "accept_marketing_checkbox_label": "Email me with news and offers",
-        "accept_sms_checkbox_label": "WhatsApp me with offers and deals"
+        "accept_marketing_checkbox_label": "Email me with offers and deals",
+        "accept_sms_checkbox_label": "WhatsApp me with offers and deals",
+        "post_accept_marketing_checkbox_label": "You are subscribed to receive offers and deals"
       }
+    }
+  },
+  "customer_accounts": {
+    "order_details": {
+      "marketing_checkbox_label": "Email me with offers and deals"
     }
   }
 }
