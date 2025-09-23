@@ -67,6 +67,12 @@
     "as_featured_on_VyC3Jh": {
       "type": "as-featured-on",
       "blocks": {
+        "logo_AQLY7L": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/singaporeBusinessJournal.jpg"
+          }
+        },
         "logo_XKC6fG": {
           "type": "logo",
           "settings": {
@@ -105,6 +111,7 @@
         }
       },
       "block_order": [
+        "logo_AQLY7L",
         "logo_XKC6fG",
         "logo_VLrewA",
         "logo_RDJfEV",
