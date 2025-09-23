@@ -1,0 +1,41 @@
+<div class="video-carousel">
+  {% section 'video-data' %}
+
+  <div class="video-carousel-wrapper">
+    {% for block in section.blocks %}
+      <a href="{{ routes.pages_url }}/video?vid={{ block.id }}" target="_blank" class="video-thumbnail">
+        <img src="{{ block.settings.thumbnail | img_url: '400x' }}" alt="Video thumbnail">
+      </a>
+    {% endfor %}
+  </div>
+</div>
+
+<style>
+.video-carousel-wrapper {
+  display: flex;
+  gap: 15px;
+  overflow-x: auto;
+  padding: 10px 0;
+  scroll-snap-type: x mandatory;
+}
+.video-thumbnail {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+}
+.video-thumbnail img {
+  width: 250px;
+  height: auto;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+.video-thumbnail:hover img {
+  transform: scale(1.05);
+}
+</style>
+
+{% schema %}
+{
+  "name": "Video Carousel",
+  "settings": []
+}
+{% endschema %}
