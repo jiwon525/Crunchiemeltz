@@ -1,11 +1,12 @@
 <div class="video-carousel-new-tab">
-  {% section 'video-data' %}
-
   <div class="video-carousel-wrapper">
     {% for block in section.blocks %}
-      <a href="{{ routes.pages_url }}/video?vid={{ block.id }}" target="_blank" class="video-thumbnail">
-        <img src="{{ block.settings.thumbnail | img_url: '400x' }}" alt="Video thumbnail">
-      </a>
+      {% if block.settings.thumbnail != blank %}
+        {% assign thumb = block.settings.thumbnail | image_url: width: 400 %}
+        <a href="{{ routes.pages_url }}/video?vid={{ block.id }}" target="_blank" class="video-thumbnail">
+          <img src="{{ thumb }}" alt="Video thumbnail" width="400" height="225">
+        </a>
+      {% endif %}
     {% endfor %}
   </div>
 </div>
@@ -23,8 +24,8 @@
   scroll-snap-align: start;
 }
 .video-thumbnail img {
-  width: 250px;
-  height: auto;
+  width: 250px; /* displayed width */
+  height: auto; /* preserves aspect ratio */
   border-radius: 8px;
   transition: transform 0.3s ease;
 }
@@ -37,9 +38,28 @@
 {
   "name": "Video Carousel (New Tab)",
   "settings": [],
-  "blocks": [],
+  "blocks": [
+    {
+      "type": "video_block",
+      "name": "Video",
+      "settings": [
+        {
+          "type": "url",
+          "id": "video_url",
+          "label": "Video URL"
+        },
+        {
+          "type": "image_picker",
+          "id": "thumbnail",
+          "label": "Thumbnail"
+        }
+      ]
+    }
+  ],
   "presets": [
-    { "name": "Video Carousel (New Tab)" }
+    {
+      "name": "Video Carousel (New Tab)"
+    }
   ]
 }
 {% endschema %}
