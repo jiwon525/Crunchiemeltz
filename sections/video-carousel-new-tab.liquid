@@ -1,7 +1,7 @@
 <div class="video-carousel-new-tab">
   <div class="video-carousel-wrapper">
     {% for block in section.blocks %}
-      {% if block.settings.thumbnail != blank %}
+      {% if block.settings.thumbnail %}
         {% assign thumb = block.settings.thumbnail | image_url: width: 400 %}
         <a href="{{ routes.pages_url }}/video?vid={{ block.id }}" target="_blank" class="video-thumbnail">
           <img src="{{ thumb }}" alt="Video thumbnail" width="400" height="225">
@@ -24,8 +24,8 @@
   scroll-snap-align: start;
 }
 .video-thumbnail img {
-  width: 250px; /* displayed width */
-  height: auto; /* preserves aspect ratio */
+  width: 250px; 
+  height: auto;
   border-radius: 8px;
   transition: transform 0.3s ease;
 }
