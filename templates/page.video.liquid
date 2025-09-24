@@ -1,16 +1,7 @@
-{% assign video_url = request.params.url %}
-
 <div class="video-page-container">
-  {% if video_url %}
-    <div class="video-wrapper">
-      <video width="800" height="450" controls autoplay>
-        <source src="{{ video_url }}" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-    </div>
-  {% else %}
-    <p class="no-video">No video selected. Please go back to the <a href="{{ routes.root_url }}">homepage</a>.</p>
-  {% endif %}
+  <div id="video-wrapper">
+    <p>Loading video...</p>
+  </div>
 </div>
 
 <style>
@@ -21,16 +12,33 @@
   flex-direction: column;
   padding: 50px 20px;
 }
-.video-wrapper video {
+#video-wrapper video {
   max-width: 100%;
   height: auto;
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0,0,0,0.2);
 }
-.no-video {
-  font-size: 18px;
-  color: #555;
-  margin-top: 50px;
-  text-align: center;
-}
 </style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const params = new URLSearchParams(window.location.search);
+  const videoUrl = params.get("url");
+
+  const wrapper = document.getElementById("video-wrapper");
+  if (videoUrl) {
+    wrapper.innerHTML = `
+      <video width="800" height="450" controls autoplay>
+        <source src="${decodeURIComponent(videoUrl)}" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    `;
+  } else {
+    wrapper.innerHTML = `
+      <p class="no-video">No video selected. Please go back to the 
+        <a href="{{ routes.root_url }}">homepage</a>.
+      </p>
+    `;
+  }
+});
+</script>
