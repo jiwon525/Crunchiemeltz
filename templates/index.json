@@ -192,6 +192,7 @@
         "carousel_video_qa4eQT",
         "carousel_video_UYac6K"
       ],
+      "disabled": true,
       "name": "Videos Slider",
       "settings": {
         "section_heading": "Videos",
@@ -215,6 +216,59 @@
         "media_design": "adapt",
         "media_shadow": false,
         "testimonial_name_size": 20
+      }
+    },
+    "video_carousel_new_tab_M3XzBi": {
+      "type": "video-carousel-new-tab",
+      "blocks": {
+        "video_wWxMAQ": {
+          "type": "video",
+          "settings": {
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/b05443156c5e4b6cb84ce68e2ba375bc.mov"
+          }
+        },
+        "video_tHRErX": {
+          "type": "video",
+          "settings": {
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/ac21774d6b964860b238cc7cc0809ef9.mov"
+          }
+        },
+        "video_mV49Hc": {
+          "type": "video",
+          "settings": {
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/68fd8dc518434440a05095a8450f5817.mov"
+          }
+        },
+        "video_EgLknq": {
+          "type": "video",
+          "settings": {
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/a252542cefba454d9ccbda46beabb1eb.mov"
+          }
+        },
+        "video_g9Xpb4": {
+          "type": "video",
+          "settings": {
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/cb8191ff965043968d402acabe8289ab.mov"
+          }
+        }
+      },
+      "block_order": [
+        "video_wWxMAQ",
+        "video_tHRErX",
+        "video_mV49Hc",
+        "video_EgLknq",
+        "video_g9Xpb4"
+      ],
+      "name": "Video Carousel (New Tab)",
+      "settings": {
+        "section_heading": "Videos",
+        "section_bg_color": "#ffffff",
+        "section_padding_top": 40,
+        "section_padding_bottom": 40,
+        "full_width": false,
+        "show_arrows": true,
+        "media_shadow": false,
+        "auto_play_videos": false
       }
     },
     "as_featured_on_JjNrwe": {
@@ -283,6 +337,7 @@
     "as_featured_on_VyC3Jh",
     "featured_collection",
     "video_carousel_aQgK4L",
+    "video_carousel_new_tab_M3XzBi",
     "as_featured_on_JjNrwe"
   ]
 }
