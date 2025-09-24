@@ -37,7 +37,7 @@
 
 <style>
 .video-carousel-wrapper {
-  display: relative;
+  display: flex;
   align-items: center;
   position: relative;
 }
@@ -63,7 +63,7 @@
   border-radius: 8px;
 }
 
-{% comment %} .arrow {
+.arrow {
   background: {{ section.settings.arrow_bg_color | default: '#000' }}; /* customizable background */
   color: #fff; /* arrow color */
   border: none;
@@ -92,41 +92,6 @@
 
 #video-carousel-{{ section.id }} .right-arrow {
   right: 20px; /* adjust spacing */
-} {% endcomment %}
-
-.arrow {
-  position: absolute; /* ensure absolute positioning works */
-  top: 50%;
-  transform: translateY(-50%);
-  background: {{ section.settings.arrow_bg_color | default: '#000' }};
-  color: #fff;
-  border: none;
-  font-size: 2.5rem;
-  font-weight: bold;
-  cursor: pointer;
-  padding: 15px;
-  border-radius: 50%;
-  transition: background 0.2s ease, transform 0.2s ease;
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 60px;
-  height: 60px;
-}
-
-.arrow:hover {
-  background: #333;
-  transform: scale(1.1);
-}
-
-/* Move arrows further from the video */
-.left-arrow {
-  left: -30px; /* negative or positive depending on desired distance */
-}
-
-.right-arrow {
-  right: -30px;
 }
 
 .section-heading {
