@@ -1,32 +1,13 @@
-{% comment %}
-Video Page Template
-Displays the video selected from the carousel using ?vid=BLOCK_ID
-{% endcomment %}
-
-{% assign vid = request.params.vid %}
+{% assign video_url = request.params.url %}
 
 <div class="video-page-container">
-  {% if vid %}
-    {% assign found_video = false %}
-
-    {% section 'video-carousel-new-tab' %} {# Provides access to blocks #}
-
-    {% for block in section.blocks %}
-      {% if block.id == vid %}
-        <div class="video-wrapper">
-          <video width="800" height="450" controls autoplay>
-            <source src="{{ block.settings.video_url }}" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
-        </div>
-        {% assign found_video = true %}
-      {% endif %}
-    {% endfor %}
-
-    {% unless found_video %}
-      <p class="no-video">Video not found.</p>
-    {% endunless %}
-
+  {% if video_url %}
+    <div class="video-wrapper">
+      <video width="800" height="450" controls autoplay>
+        <source src="{{ video_url }}" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
   {% else %}
     <p class="no-video">No video selected. Please go back to the <a href="{{ routes.root_url }}">homepage</a>.</p>
   {% endif %}
