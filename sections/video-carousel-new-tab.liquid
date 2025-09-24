@@ -1,110 +1,84 @@
+
+
 <div id="video-carousel-{{ section.id }}" class="video-carousel-section" style="background-color: {{ section.settings.section_bg_color }}; padding-top: {{ section.settings.section_padding_top }}px; padding-bottom: {{ section.settings.section_padding_bottom }}px;">
   <div class="video-carousel-container" style="width: {% if section.settings.full_width %}100%{% else %}80%{% endif %}; margin: 0 auto;">
+    
     {% if section.settings.section_heading != blank %}
       <h2 class="section-heading">{{ section.settings.section_heading }}</h2>
     {% endif %}
+
     <div class="video-carousel-wrapper">
       {% if section.settings.show_arrows %}
-        <button class="arrow left-arrow">❮</button>
+        <button class="arrow left-arrow" data-target="video-carousel-{{ section.id }}">❮</button>
       {% endif %}
-      <div class="video-carousel-slider">
+
+      <div class="video-carousel-slider" id="slider-{{ section.id }}">
         <div class="slider-track">
           {% for block in section.blocks %}
-            <div class="slide" {% if section.settings.media_shadow %}style="box-shadow: 0 4px 8px rgba(0,0,0,0.2);" {% endif %}>
-              <a href="/pages/video?vid={{ block.settings.video_url | url_encode }}" target="_blank">
-                <video class="media-element" controls muted {% if section.settings.auto_play_videos %}autoplay loop{% endif %}>
-                  <source src="{{ block.settings.video_url }}">
-                </video>
-              </a>
-            </div>
+            {% if block.settings.video_url != blank %}
+              <div class="slide" {% if section.settings.media_shadow %}style="box-shadow: 0 4px 8px rgba(0,0,0,0.2);" {% endif %}>
+                <a href="/pages/video?url={{ block.settings.video_url | url_encode }}" target="_blank">
+                  <video class="media-element" controls muted {% if section.settings.auto_play_videos %} autoplay loop {% endif %}>
+                    <source src="{{ block.settings.video_url }}" type="video/mp4">
+                  </video>
+                </a>
+              </div>
+            {% endif %}
           {% endfor %}
         </div>
       </div>
+
       {% if section.settings.show_arrows %}
-        <button class="arrow right-arrow">❯</button>
+        <button class="arrow right-arrow" data-target="video-carousel-{{ section.id }}">❯</button>
       {% endif %}
     </div>
   </div>
 </div>
 
 <style>
-  #video-carousel-{{ section.id }} {
-    width: 100%;
-    text-align: center;
-  }
+.video-carousel-wrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
 
-  #video-carousel-{{ section.id }} .video-carousel-container {
-    margin: 0 auto;
-  }
+.video-carousel-slider {
+  overflow: hidden;
+  width: 100%;
+}
 
-  #video-carousel-{{ section.id }} .section-heading {
-    font-size: {% if section.settings.heading_size == 'small' %}24px{% elsif section.settings.heading_size == 'medium' %}32px{% elsif section.settings.heading_size == 'large' %}40px{% endif %};
-    text-align: {{ section.settings.heading_alignment }};
-    margin-bottom: 20px;
-  }
+.slider-track {
+  display: flex;
+  gap: 15px;
+  transition: transform 0.3s ease;
+}
 
-  #video-carousel-{{ section.id }} .video-carousel-wrapper {
-    position: relative;
-    overflow: hidden;
-  }
+.slide {
+  flex: 0 0 auto;
+}
 
-  #video-carousel-{{ section.id }} .video-carousel-slider {
-    overflow: hidden;
-    position: relative;
-  }
+.media-element {
+  max-width: 300px;
+  height: auto;
+  border-radius: 8px;
+}
 
-  #video-carousel-{{ section.id }} .slider-track {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-    will-change: transform;
-  }
-
-  #video-carousel-{{ section.id }} .slide {
-    flex: 0 0 calc(100% / {{ section.settings.visible_slides | default: 3 }});
-    box-sizing: border-box;
-    padding: 20px;
-  }
-
-  @media (max-width: 767px) {
-    #video-carousel-{{ section.id }} .slide {
-      flex: 0 0 calc(100% / {{ section.settings.visible_mobile | default: 1 }});
-    }
-  }
-
-  #video-carousel-{{ section.id }} .media-element {
-    width: 100%;
-    object-fit: cover;
-    {% case section.settings.media_design %}
-      {% when "square" %}
-        aspect-ratio: 1 / 1;
-      {% when "portrait" %}
-        aspect-ratio: 2 / 3;
-      {% else %}
-        height: auto;
-    {% endcase %}
-  }
-
-  /* Arrow Buttons */
-  #video-carousel-{{ section.id }} .arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: {{ section.settings.arrow_bg_color }};
-    color: #fff;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-    z-index: 10;
-    border-radius: {% if section.settings.arrow_shape == 'circle' %}50%{% else %}0{% endif %};
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 50px;
-    height: 50px;
-  }
-
-  #video-carousel-{{ section.id }} .left-arrow { left: 10px; }
-  #video-carousel-{{ section.id }} .right-arrow { right: 10px; }
+.arrow {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 10px;
+  transition: color 0.2s ease;
+  z-index: 2;
+}
+.arrow:hover {
+  color: #333;
+}
+.section-heading {
+  text-align: center;
+  margin-bottom: 20px;
+}
 </style>
 
 <script>
@@ -113,13 +87,13 @@ document.addEventListener("DOMContentLoaded", function() {
   
   carousels.forEach(carousel => {
     const slider = carousel.querySelector(".video-carousel-slider");
+    const track = slider.querySelector(".slider-track");
+    const slides = track.querySelectorAll(".slide");
     const leftArrow = carousel.querySelector(".left-arrow");
     const rightArrow = carousel.querySelector(".right-arrow");
-    const slide = carousel.querySelector(".slide");
 
-    if (!slide) return;
-
-    const slideWidth = slide.offsetWidth + 15;
+    const slideWidth = slides[0]?.offsetWidth + 15 || 300; // include gap
+    let scrollAmount = 0;
 
     if (leftArrow) {
       leftArrow.addEventListener("click", () => {
@@ -136,6 +110,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 </script>
 
+{% schema %}
 {
   "name": "Video Carousel (New Tab)",
   "settings": [
@@ -192,40 +167,6 @@ document.addEventListener("DOMContentLoaded", function() {
       "id": "auto_play_videos",
       "label": "Autoplay Videos (Muted, Loop)",
       "default": false
-    },
-    {
-      "type": "range",
-      "id": "visible_slides",
-      "label": "Visible Slides (Desktop)",
-      "min": 1,
-      "max": 6,
-      "step": 1,
-      "default": 3
-    },
-    {
-      "type": "range",
-      "id": "visible_mobile",
-      "label": "Visible Slides (Mobile)",
-      "min": 1,
-      "max": 2,
-      "step": 1,
-      "default": 1
-    },
-    {
-      "type": "color",
-      "id": "arrow_bg_color",
-      "label": "Arrow Background Color",
-      "default": "#000000"
-    },
-    {
-      "type": "select",
-      "id": "arrow_shape",
-      "label": "Arrow Shape",
-      "default": "circle",
-      "options": [
-        { "value": "circle", "label": "Circle" },
-        { "value": "square", "label": "Square" }
-      ]
     }
   ],
   "blocks": [
@@ -236,7 +177,8 @@ document.addEventListener("DOMContentLoaded", function() {
         {
           "type": "url",
           "id": "video_url",
-          "label": "Video URL"
+          "label": "Video URL",
+          
         }
       ]
     }
@@ -248,3 +190,4 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   ]
 }
+{% endschema %}
