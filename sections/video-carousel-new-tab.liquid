@@ -1,144 +1,123 @@
-{% comment %} <div class="video-carousel-new-tab">
-  <div class="video-carousel-wrapper">
-    {% for block in section.blocks %}
-      {% if block.settings.video_url != blank %}
-      <a href="/pages/video?url={{ block.settings.video_url | url_encode }}" target="_blank" class="video-thumbnail">
-        <video width="300" height="170" muted playsinline>
-          <source src="{{ block.settings.video_url }}" type="video/mp4">
-        </video>
-      </a>
 
-
-      {% endif %}
-    {% endfor %}
-  </div>
-</div>
-
-<style>
-.video-carousel-wrapper {
-  display: flex;
-  gap: 15px;
-  overflow-x: auto;
-  padding: 10px 0;
-  scroll-snap-type: x mandatory;
-}
-.video-thumbnail {
-  flex: 0 0 auto;
-  scroll-snap-align: start;
-}
-.video-thumbnail video {
-  border-radius: 8px;
-  transition: transform 0.3s ease;
-}
-.video-thumbnail:hover video {
-  transform: scale(1.05);
-}
-</style>
-
-{% schema %}
-{
-  "name": "Video Carousel (New Tab)",
-  "settings": [],
-  "blocks": [
-    {
-      "type": "video_block",
-      "name": "Video",
-      "settings": [
-        {
-          "type": "url",
-          "id": "video_url",
-          "label": "Video URL"
-        }
-      ]
-    }
-  ],
-  "presets": [
-    {
-      "name": "Video Carousel (New Tab)"
-    }
-  ]
-}
-{% endschema %} {% endcomment %}
 
 <div id="video-carousel-{{ section.id }}" class="video-carousel-section" style="background-color: {{ section.settings.section_bg_color }}; padding-top: {{ section.settings.section_padding_top }}px; padding-bottom: {{ section.settings.section_padding_bottom }}px;">
   <div class="video-carousel-container" style="width: {% if section.settings.full_width %}100%{% else %}80%{% endif %}; margin: 0 auto;">
-    
     {% if section.settings.section_heading != blank %}
       <h2 class="section-heading">{{ section.settings.section_heading }}</h2>
     {% endif %}
-
     <div class="video-carousel-wrapper">
       {% if section.settings.show_arrows %}
-        <button class="arrow left-arrow" data-target="video-carousel-{{ section.id }}">❮</button>
+        <button class="arrow left-arrow">❮</button>
       {% endif %}
-
-      <div class="video-carousel-slider" id="slider-{{ section.id }}">
+      <div class="video-carousel-slider">
         <div class="slider-track">
           {% for block in section.blocks %}
-            {% if block.settings.video_url != blank %}
-              <div class="slide" {% if section.settings.media_shadow %}style="box-shadow: 0 4px 8px rgba(0,0,0,0.2);" {% endif %}>
-                <a href="/pages/video?url={{ block.settings.video_url | url_encode }}" target="_blank">
-                  <video class="media-element" controls muted {% if section.settings.auto_play_videos %} autoplay loop {% endif %}>
-                    <source src="{{ block.settings.video_url }}" type="video/mp4">
-                  </video>
-                </a>
-              </div>
-            {% endif %}
+            <div class="slide">
+              <a href="/pages/video?vid={{ block.settings.video_url | url_encode }}" target="_blank">
+                <video class="media-element" controls muted {% if section.settings.auto_play_videos %}autoplay loop{% endif %}>
+                  <source src="{{ block.settings.video_url }}">
+                </video>
+              </a>
+            </div>
           {% endfor %}
         </div>
       </div>
-
       {% if section.settings.show_arrows %}
-        <button class="arrow right-arrow" data-target="video-carousel-{{ section.id }}">❯</button>
+        <button class="arrow right-arrow">❯</button>
       {% endif %}
     </div>
   </div>
 </div>
 
 <style>
-.video-carousel-wrapper {
-  display: flex;
-  align-items: center;
-  position: relative;
-}
+  /* Outer section */
+  #video-carousel-{{ section.id }} {
+    width: 100%;
+    text-align: center;
+  }
 
-.video-carousel-slider {
-  overflow: hidden;
-  width: 100%;
-}
+  /* Container */
+  #video-carousel-{{ section.id }} .video-carousel-container {
+    margin: 0 auto;
+  }
 
-.slider-track {
-  display: flex;
-  gap: 15px;
-  transition: transform 0.3s ease;
-}
+  /* Heading */
+  #video-carousel-{{ section.id }} .section-heading {
+    font-size: {% if section.settings.heading_size == 'small' %}24px{% elsif section.settings.heading_size == 'medium' %}32px{% elsif section.settings.heading_size == 'large' %}40px{% endif %};
+    text-align: {{ section.settings.heading_alignment }};
+    margin-bottom: 20px;
+  }
 
-.slide {
-  flex: 0 0 auto;
-}
+  /* Carousel wrapper */
+  #video-carousel-{{ section.id }} .video-carousel-wrapper {
+    position: relative;
+    overflow: hidden;
+  }
 
-.media-element {
-  max-width: 300px;
-  height: auto;
-  border-radius: 8px;
-}
+  #video-carousel-{{ section.id }} .video-carousel-slider {
+    overflow: hidden;
+    position: relative;
+  }
 
-.arrow {
-  background: none;
-  border: none;
-  font-size: 2rem;
-  cursor: pointer;
-  padding: 10px;
-  transition: color 0.2s ease;
-  z-index: 2;
-}
-.arrow:hover {
-  color: #333;
-}
-.section-heading {
-  text-align: center;
-  margin-bottom: 20px;
-}
+  #video-carousel-{{ section.id }} .slider-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    will-change: transform;
+  }
+
+  /* Desktop slide width */
+  #video-carousel-{{ section.id }} .slide {
+    flex: 0 0 calc(100% / {{ section.settings.visible_slides }});
+    box-sizing: border-box;
+    padding: 20px;
+  }
+
+  /* Mobile */
+  @media (max-width: 767px) {
+    #video-carousel-{{ section.id }} .slide {
+      flex: 0 0 calc(100% / {{ section.settings.visible_mobile }});
+    }
+  }
+
+  /* Video style */
+  #video-carousel-{{ section.id }} .media-element {
+    width: 100%;
+    object-fit: cover;
+    {% case section.settings.media_design %}
+      {% when "square" %}
+        aspect-ratio: 1 / 1;
+      {% when "portrait" %}
+        aspect-ratio: 2 / 3;
+      {% else %}
+        height: auto;
+    {% endcase %}
+  }
+
+  /* Arrow Buttons */
+  #video-carousel-{{ section.id }} .arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: {{ section.settings.arrow_bg_color }};
+    color: #fff;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 10;
+    border-radius: {% if section.settings.arrow_shape == 'circle' %}50%{% else %}0{% endif %};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+  }
+
+  #video-carousel-{{ section.id }} .left-arrow {
+    left: 10px;
+  }
+  #video-carousel-{{ section.id }} .right-arrow {
+    right: 10px;
+  }
 </style>
 
 <script>
@@ -251,23 +230,3 @@ document.addEventListener("DOMContentLoaded", function() {
   ]
 }
 {% endschema %}
-  {% comment %} "blocks": [
-    {
-      "type": "video_block",
-      "name": "Video",
-      "settings": [
-        {
-          "type": "url",
-          "id": "video_url",
-          "label": "Video URL"
-        }
-      ]
-    }
-  ],
-  "presets": [
-    {
-      "name": "Video Carousel (New Tab)"
-    }
-  ]
-}
-{% endschema %} {% endcomment %}
