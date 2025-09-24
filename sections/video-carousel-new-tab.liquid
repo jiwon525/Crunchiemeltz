@@ -231,6 +231,28 @@ document.addEventListener("DOMContentLoaded", function() {
   ],
   "blocks": [
     {
+      "type": "video",
+      "name": "Video",
+      "settings": [
+        {
+          "type": "url",
+          "id": "video_url",
+          "label": "Video URL",
+          
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Video Carousel (New Tab)",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
+  {% comment %} "blocks": [
+    {
       "type": "video_block",
       "name": "Video",
       "settings": [
@@ -248,4 +270,4 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   ]
 }
-{% endschema %}
+{% endschema %} {% endcomment %}
