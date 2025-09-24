@@ -1,5 +1,3 @@
-
-
 <div id="video-carousel-{{ section.id }}" class="video-carousel-section" style="background-color: {{ section.settings.section_bg_color }}; padding-top: {{ section.settings.section_padding_top }}px; padding-bottom: {{ section.settings.section_padding_bottom }}px;">
   <div class="video-carousel-container" style="width: {% if section.settings.full_width %}100%{% else %}80%{% endif %}; margin: 0 auto;">
     {% if section.settings.section_heading != blank %}
@@ -12,7 +10,7 @@
       <div class="video-carousel-slider">
         <div class="slider-track">
           {% for block in section.blocks %}
-            <div class="slide">
+            <div class="slide" {% if section.settings.media_shadow %}style="box-shadow: 0 4px 8px rgba(0,0,0,0.2);" {% endif %}>
               <a href="/pages/video?vid={{ block.settings.video_url | url_encode }}" target="_blank">
                 <video class="media-element" controls muted {% if section.settings.auto_play_videos %}autoplay loop{% endif %}>
                   <source src="{{ block.settings.video_url }}">
@@ -30,25 +28,21 @@
 </div>
 
 <style>
-  /* Outer section */
   #video-carousel-{{ section.id }} {
     width: 100%;
     text-align: center;
   }
 
-  /* Container */
   #video-carousel-{{ section.id }} .video-carousel-container {
     margin: 0 auto;
   }
 
-  /* Heading */
   #video-carousel-{{ section.id }} .section-heading {
     font-size: {% if section.settings.heading_size == 'small' %}24px{% elsif section.settings.heading_size == 'medium' %}32px{% elsif section.settings.heading_size == 'large' %}40px{% endif %};
     text-align: {{ section.settings.heading_alignment }};
     margin-bottom: 20px;
   }
 
-  /* Carousel wrapper */
   #video-carousel-{{ section.id }} .video-carousel-wrapper {
     position: relative;
     overflow: hidden;
@@ -65,21 +59,18 @@
     will-change: transform;
   }
 
-  /* Desktop slide width */
   #video-carousel-{{ section.id }} .slide {
-    flex: 0 0 calc(100% / {{ section.settings.visible_slides }});
+    flex: 0 0 calc(100% / {{ section.settings.visible_slides | default: 3 }});
     box-sizing: border-box;
     padding: 20px;
   }
 
-  /* Mobile */
   @media (max-width: 767px) {
     #video-carousel-{{ section.id }} .slide {
-      flex: 0 0 calc(100% / {{ section.settings.visible_mobile }});
+      flex: 0 0 calc(100% / {{ section.settings.visible_mobile | default: 1 }});
     }
   }
 
-  /* Video style */
   #video-carousel-{{ section.id }} .media-element {
     width: 100%;
     object-fit: cover;
@@ -112,12 +103,8 @@
     height: 50px;
   }
 
-  #video-carousel-{{ section.id }} .left-arrow {
-    left: 10px;
-  }
-  #video-carousel-{{ section.id }} .right-arrow {
-    right: 10px;
-  }
+  #video-carousel-{{ section.id }} .left-arrow { left: 10px; }
+  #video-carousel-{{ section.id }} .right-arrow { right: 10px; }
 </style>
 
 <script>
@@ -126,13 +113,13 @@ document.addEventListener("DOMContentLoaded", function() {
   
   carousels.forEach(carousel => {
     const slider = carousel.querySelector(".video-carousel-slider");
-    const track = slider.querySelector(".slider-track");
-    const slides = track.querySelectorAll(".slide");
     const leftArrow = carousel.querySelector(".left-arrow");
     const rightArrow = carousel.querySelector(".right-arrow");
+    const slide = carousel.querySelector(".slide");
 
-    const slideWidth = slides[0]?.offsetWidth + 15 || 300; // include gap
-    let scrollAmount = 0;
+    if (!slide) return;
+
+    const slideWidth = slide.offsetWidth + 15;
 
     if (leftArrow) {
       leftArrow.addEventListener("click", () => {
@@ -149,7 +136,6 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 </script>
 
-{% schema %}
 {
   "name": "Video Carousel (New Tab)",
   "settings": [
@@ -206,6 +192,40 @@ document.addEventListener("DOMContentLoaded", function() {
       "id": "auto_play_videos",
       "label": "Autoplay Videos (Muted, Loop)",
       "default": false
+    },
+    {
+      "type": "range",
+      "id": "visible_slides",
+      "label": "Visible Slides (Desktop)",
+      "min": 1,
+      "max": 6,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "visible_mobile",
+      "label": "Visible Slides (Mobile)",
+      "min": 1,
+      "max": 2,
+      "step": 1,
+      "default": 1
+    },
+    {
+      "type": "color",
+      "id": "arrow_bg_color",
+      "label": "Arrow Background Color",
+      "default": "#000000"
+    },
+    {
+      "type": "select",
+      "id": "arrow_shape",
+      "label": "Arrow Shape",
+      "default": "circle",
+      "options": [
+        { "value": "circle", "label": "Circle" },
+        { "value": "square", "label": "Square" }
+      ]
     }
   ],
   "blocks": [
@@ -216,8 +236,7 @@ document.addEventListener("DOMContentLoaded", function() {
         {
           "type": "url",
           "id": "video_url",
-          "label": "Video URL",
-          
+          "label": "Video URL"
         }
       ]
     }
@@ -229,4 +248,3 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   ]
 }
-{% endschema %}
