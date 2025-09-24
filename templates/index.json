@@ -275,6 +275,22 @@
       "settings": {
         "header_text": "Trusted Partners & Clients:"
       }
+    },
+    "video_carousel_new_tab_KMPnXY": {
+      "type": "video-carousel-new-tab",
+      "blocks": {
+        "video_block_JmVDUF": {
+          "type": "video_block",
+          "settings": {
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/b05443156c5e4b6cb84ce68e2ba375bc.mov"
+          }
+        }
+      },
+      "block_order": [
+        "video_block_JmVDUF"
+      ],
+      "name": "Video Carousel (New Tab)",
+      "settings": {}
     }
   },
   "order": [
@@ -283,6 +299,7 @@
     "as_featured_on_VyC3Jh",
     "featured_collection",
     "video_carousel_aQgK4L",
-    "as_featured_on_JjNrwe"
+    "as_featured_on_JjNrwe",
+    "video_carousel_new_tab_KMPnXY"
   ]
 }
