@@ -275,31 +275,6 @@
       "settings": {
         "header_text": "Trusted Partners & Clients:"
       }
-    },
-    "video_carousel_new_tab_MPhJ7f": {
-      "type": "video-carousel-new-tab",
-      "blocks": {
-        "video_6wJ3QG": {
-          "type": "video",
-          "settings": {
-            "video_url": "https://cdn.shopify.com/videos/c/o/v/b05443156c5e4b6cb84ce68e2ba375bc.mov"
-          }
-        }
-      },
-      "block_order": [
-        "video_6wJ3QG"
-      ],
-      "name": "Video Carousel (New Tab)",
-      "settings": {
-        "section_heading": "Featured Videos",
-        "section_bg_color": "#ffffff",
-        "section_padding_top": 40,
-        "section_padding_bottom": 40,
-        "full_width": false,
-        "show_arrows": true,
-        "media_shadow": false,
-        "auto_play_videos": false
-      }
     }
   },
   "order": [
@@ -308,7 +283,6 @@
     "as_featured_on_VyC3Jh",
     "featured_collection",
     "video_carousel_aQgK4L",
-    "as_featured_on_JjNrwe",
-    "video_carousel_new_tab_MPhJ7f"
+    "as_featured_on_JjNrwe"
   ]
 }
