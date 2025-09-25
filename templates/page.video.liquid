@@ -1,4 +1,4 @@
-<div class="video-page-container">
+{% comment %} <div class="video-page-container">
   <div id="video-wrapper">
     <p>Loading video...</p>
   </div>
@@ -41,4 +41,74 @@ document.addEventListener("DOMContentLoaded", function() {
     `;
   }
 });
-</script>
+</script> {% endcomment %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Video Page</title>
+
+  {% assign video_url = request.params.url | url_decode %}
+
+  {%- if video_url != blank -%}
+    <!-- Open Graph meta tags for video preview -->
+    <meta property="og:type" content="video.other">
+    <meta property="og:video" content="{{ video_url }}">
+    <meta property="og:video:type" content="video/mp4">
+    <meta property="og:video:width" content="1280">
+    <meta property="og:video:height" content="720">
+
+    <!-- Thumbnail image (replace with your own asset or dynamic thumbnail) -->
+    <meta property="og:image" content="{{ 'video-thumbnail.jpg' | asset_url }}">
+    <meta property="og:title" content="Watch this video">
+    <meta property="og:description" content="Check out this video shared from our store.">
+  {%- endif -%}
+</head>
+<body>
+  <div class="video-page-container">
+    <div id="video-wrapper">
+      <p>Loading video...</p>
+    </div>
+  </div>
+
+  <style>
+  .video-page-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 50px 20px;
+  }
+  #video-wrapper video {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  }
+  </style>
+
+  <script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const params = new URLSearchParams(window.location.search);
+    const videoUrl = params.get("url");
+
+    const wrapper = document.getElementById("video-wrapper");
+    if (videoUrl) {
+      wrapper.innerHTML = `
+        <video width="800" height="450" controls autoplay controlsList="nodownload">
+          <source src="${decodeURIComponent(videoUrl)}" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      `;
+    } else {
+      wrapper.innerHTML = `
+        <p class="no-video">No video selected. Please go back to the 
+          <a href="{{ routes.root_url }}">homepage</a>.
+        </p>
+      `;
+    }
+  });
+  </script>
+</body>
+</html>
