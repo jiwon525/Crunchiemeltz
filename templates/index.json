@@ -439,7 +439,7 @@
       "name": "t:sections.collapsible_content.presets.name",
       "settings": {
         "caption": "",
-        "heading": "FAQ",
+        "heading": "<strong>Crunchie Meltz FAQs</strong>",
         "heading_size": "h1",
         "heading_alignment": "center",
         "layout": "none",
