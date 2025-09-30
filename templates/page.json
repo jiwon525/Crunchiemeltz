@@ -15,9 +15,132 @@
         "padding_top": 28,
         "padding_bottom": 28
       }
+    },
+    "collapsible_content_Chyib7": {
+      "type": "collapsible-content",
+      "blocks": {
+        "collapsible_row_yEz3Bz": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Is Crunchie Meltz Halal certified?",
+            "icon": "none",
+            "row_content": "<p>All our brownies are made with Halal-certified ingredients. However, we are not officially Halal-certified by a governing body.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_4XWXHU": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What are the ingredients?",
+            "icon": "none",
+            "row_content": "<p>We use high-quality, carefully selected ingredients to ensure our brownies are rich, moist, and full of flavour. Our ingredients are chocolate, cocoa powder, sugar, salt, flour, vanilla essence, and eggs.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_wQeLNA": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Whatare the available brownie flavours and sizes?",
+            "icon": "none",
+            "row_content": "<p>We offer 8x8-inch brownie trays, cut into 25 bite-sized<br/>pieces:</p><ul><li>SmoreOrea Crunch (Special) – $58</li><li>CookieCrunch (Signature) – $48</li><li>ChocoCrunch – $45</li><li>CrunchieDark – $45</li></ul>",
+            "page": ""
+          }
+        },
+        "collapsible_row_hizDXd": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "How can I place an order?",
+            "icon": "none",
+            "row_content": "<p>You can place orders via WhatsApp or our website. Please provide your preferred flavour, quantity, and collection or delivery option.<br/><br/><br/><br/></p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_yFFaWi": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What are the delivery options and charges?",
+            "icon": "none",
+            "row_content": "<p>Delivery is $15 per trip within Singapore. Self-collection is available at 7 Rivervale<br/>Link, Lobby 8 Singapore 545125.<br/><br/><br/><br/></p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_jnPK38": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "How long in advance should I place my order?",
+            "icon": "check_mark",
+            "row_content": "<p>We require at least <strong>1 day lead time</strong> for all orders. Please note we are closed on Sundays.<br/><br/><br/><br/></p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_fX7qj6": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Are your products suitable for gifting?",
+            "icon": "check_mark",
+            "row_content": "<p>Yes! Our brownies are bite-sized and perfect for sharing or gifting.<br/><br/><br/><br/></p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_9niwXC": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "How should I store the brownies?",
+            "icon": "check_mark",
+            "row_content": "<p>Store brownies in an airtight container at room temperature for up to 3 days. For longer storage, refrigerate for up to 5 days.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_eLiaEp": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Do you offer bulk orders for events or corporate gifts?",
+            "icon": "check_mark",
+            "row_content": "<p>Yes,we do! Please contact us directly to discuss your requirements and pricing.<br/><br/><br/><br/></p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_r8GrWW": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Doyou have any reviews to read?",
+            "icon": "check_mark",
+            "row_content": "<p>Yes! You can read customer reviews on our Google page: <a href=\"https://t.ly/bay-B\">https://t.ly/bay-B</a> and on our <a href=\"https://crunchiemeltz.sg\">website</a>.</p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_row_yEz3Bz",
+        "collapsible_row_4XWXHU",
+        "collapsible_row_wQeLNA",
+        "collapsible_row_hizDXd",
+        "collapsible_row_yFFaWi",
+        "collapsible_row_jnPK38",
+        "collapsible_row_fX7qj6",
+        "collapsible_row_9niwXC",
+        "collapsible_row_eLiaEp",
+        "collapsible_row_r8GrWW"
+      ],
+      "name": "t:sections.collapsible_content.presets.name",
+      "settings": {
+        "caption": "",
+        "heading": "",
+        "heading_size": "h1",
+        "heading_alignment": "center",
+        "layout": "none",
+        "color_scheme": "",
+        "container_color_scheme": "",
+        "open_first_collapsible_row": false,
+        "image_ratio": "adapt",
+        "desktop_layout": "image_second",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "collapsible_content_Chyib7"
   ]
 }
