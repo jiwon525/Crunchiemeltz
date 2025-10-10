@@ -226,6 +226,12 @@
     "video_carousel_new_tab_M3XzBi": {
       "type": "video-carousel-new-tab",
       "blocks": {
+        "video_AeBqC4": {
+          "type": "video",
+          "settings": {
+            "video_url": ""
+          }
+        },
         "video_wWxMAQ": {
           "type": "video",
           "settings": {
@@ -263,6 +269,7 @@
         }
       },
       "block_order": [
+        "video_AeBqC4",
         "video_wWxMAQ",
         "video_tHRErX",
         "video_mV49Hc",
