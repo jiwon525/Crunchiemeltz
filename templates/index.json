@@ -108,6 +108,10 @@
           "settings": {
             "logo": "shopify://shop_images/bastille.png"
           }
+        },
+        "logo_r4Patd": {
+          "type": "logo",
+          "settings": {}
         }
       },
       "block_order": [
@@ -117,7 +121,8 @@
         "logo_RDJfEV",
         "logo_czTUBX",
         "logo_bTtczG",
-        "logo_GznLc8"
+        "logo_GznLc8",
+        "logo_r4Patd"
       ],
       "settings": {
         "header_text": "As Featured On:"
@@ -224,31 +229,36 @@
         "video_wWxMAQ": {
           "type": "video",
           "settings": {
-            "video_url": "https://cdn.shopify.com/videos/c/o/v/b05443156c5e4b6cb84ce68e2ba375bc.mov"
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/b05443156c5e4b6cb84ce68e2ba375bc.mov",
+            "video_thumbnail": "shopify://shop_images/Slide1.jpg"
           }
         },
         "video_tHRErX": {
           "type": "video",
           "settings": {
-            "video_url": "https://cdn.shopify.com/videos/c/o/v/ac21774d6b964860b238cc7cc0809ef9.mov"
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/ac21774d6b964860b238cc7cc0809ef9.mov",
+            "video_thumbnail": "shopify://shop_images/Slide2_b7181901-69ad-4388-8215-d4a70b15af7f.jpg"
           }
         },
         "video_mV49Hc": {
           "type": "video",
           "settings": {
-            "video_url": "https://cdn.shopify.com/videos/c/o/v/68fd8dc518434440a05095a8450f5817.mov"
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/68fd8dc518434440a05095a8450f5817.mov",
+            "video_thumbnail": "shopify://shop_images/Slide3_4699ad95-e591-443c-8070-e9420fff0c0b.jpg"
           }
         },
         "video_EgLknq": {
           "type": "video",
           "settings": {
-            "video_url": "https://cdn.shopify.com/videos/c/o/v/a252542cefba454d9ccbda46beabb1eb.mov"
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/a252542cefba454d9ccbda46beabb1eb.mov",
+            "video_thumbnail": "shopify://shop_images/Slide4_a493bbd4-cd5f-4f1c-a3a6-13a5d9af3eb2.jpg"
           }
         },
         "video_g9Xpb4": {
           "type": "video",
           "settings": {
-            "video_url": "https://cdn.shopify.com/videos/c/o/v/cb8191ff965043968d402acabe8289ab.mov"
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/cb8191ff965043968d402acabe8289ab.mov",
+            "video_thumbnail": "shopify://shop_images/Slide5_82c19c2b-50df-4969-b747-90ed898dc335.jpg"
           }
         }
       },
