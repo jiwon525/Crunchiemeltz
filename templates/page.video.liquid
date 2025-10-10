@@ -51,26 +51,41 @@ document.addEventListener("DOMContentLoaded", function() {
 
   {% assign video_url = request.params.url | url_decode %}
   {% assign thumbnail_url = request.params.thumb | url_decode %}
+  {% assign full_page_url = shop.url | append: request.path | append: "?" | append: request.query_string %}
 
-  {%- if video_url != blank -%}
-    <!-- Open Graph meta tags for video preview -->
-    <meta property="og:type" content="video.other">
-    <meta property="og:video" content="{{ video_url }}">
-    <meta property="og:video:type" content="video/mp4">
-    <meta property="og:video:width" content="1280">
-    <meta property="og:video:height" content="720">
+  {% if video_url != blank %}
+    <!-- ✅ Open Graph meta tags for preview -->
+    <meta property="og:title" content="Watch this video" />
+    <meta property="og:type" content="video.other" />
+    <meta property="og:url" content="{{ full_page_url }}" />
+    <meta property="og:description" content="Check out this video shared from our store!" />
 
-      <!-- Dynamic thumbnail -->
-  {% if thumbnail_url != blank %}
-    <meta property="og:image" content="{{ thumbnail_url }}">
-  {% else %}
-    <meta property="og:image" content="{{ 'video-thumbnail.jpg' | asset_url }}">
+    <!-- ✅ Thumbnail (absolute URL required) -->
+    {% if thumbnail_url != blank %}
+      <meta property="og:image" content="{{ thumbnail_url }}" />
+      <meta property="og:image:secure_url" content="{{ thumbnail_url }}" />
+    {% else %}
+      <meta property="og:image" content="{{ 'video-thumbnail.jpg' | asset_url | prepend: shop.url }}" />
+    {% endif %}
+
+    <!-- ✅ Video metadata -->
+    <meta property="og:video" content="{{ video_url }}" />
+    <meta property="og:video:type" content="video/mp4" />
+    <meta property="og:video:width" content="1280" />
+    <meta property="og:video:height" content="720" />
+
+    <!-- ✅ Twitter cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Watch this video" />
+    <meta name="twitter:description" content="Check out this video shared from our store!" />
+    {% if thumbnail_url != blank %}
+      <meta name="twitter:image" content="{{ thumbnail_url }}" />
+    {% else %}
+      <meta name="twitter:image" content="{{ 'video-thumbnail.jpg' | asset_url | prepend: shop.url }}" />
+    {% endif %}
   {% endif %}
-
-  <meta property="og:title" content="Watch this video">
-  <meta property="og:description" content="Check out this video shared from our store.">
-  {%- endif -%}
 </head>
+
 <body>
   <div class="video-page-container">
     <div id="video-wrapper">
@@ -79,42 +94,43 @@ document.addEventListener("DOMContentLoaded", function() {
   </div>
 
   <style>
-  .video-page-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    padding: 50px 20px;
-  }
-  #video-wrapper video {
-    max-width: 100%;
-    height: auto;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-  }
+    .video-page-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 50px 20px;
+    }
+    #video-wrapper video {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
   </style>
 
   <script>
-  document.addEventListener("DOMContentLoaded", function() {
-    const params = new URLSearchParams(window.location.search);
-    const videoUrl = params.get("url");
+    document.addEventListener("DOMContentLoaded", function() {
+      const params = new URLSearchParams(window.location.search);
+      const videoUrl = params.get("url");
 
-    const wrapper = document.getElementById("video-wrapper");
-    if (videoUrl) {
-      wrapper.innerHTML = `
-        <video width="800" height="450" controls autoplay controlsList="nodownload">
-          <source src="${decodeURIComponent(videoUrl)}" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-      `;
-    } else {
-      wrapper.innerHTML = `
-        <p class="no-video">No video selected. Please go back to the 
-          <a href="{{ routes.root_url }}">homepage</a>.
-        </p>
-      `;
-    }
-  });
+      const wrapper = document.getElementById("video-wrapper");
+      if (videoUrl) {
+        wrapper.innerHTML = `
+          <video width="800" height="450" controls autoplay muted playsinline controlsList="nodownload">
+            <source src="${decodeURIComponent(videoUrl)}" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        `;
+      } else {
+        wrapper.innerHTML = `
+          <p class="no-video">No video selected. Please go back to the 
+            <a href="{{ routes.root_url }}">homepage</a>.
+          </p>
+        `;
+      }
+    });
   </script>
 </body>
 </html>
+
