@@ -466,18 +466,17 @@
     "video_carousel_new_tab_zTKMeN": {
       "type": "video-carousel-new-tab",
       "blocks": {
-        "video_Y8cJVy": {
+        "video_3WdXtP": {
           "type": "video",
           "settings": {
-            "video_url": "https://cdn.shopify.com/videos/c/o/v/cb8191ff965043968d402acabe8289ab.mov",
-            "video_thumbnail": "shopify://shop_images/Slide1.jpg"
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/b05443156c5e4b6cb84ce68e2ba375bc.mov",
+            "video_thumbnail": "shopify://shop_images/Slide4_a493bbd4-cd5f-4f1c-a3a6-13a5d9af3eb2.jpg"
           }
         }
       },
       "block_order": [
-        "video_Y8cJVy"
+        "video_3WdXtP"
       ],
-      "disabled": true,
       "name": "Video Carousel (New Tab)",
       "settings": {
         "section_heading": "Featured Videos",
