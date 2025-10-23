@@ -51,7 +51,10 @@
   elsif request.page_type == 'password'
     assign og_url = request.origin
   endif
--%}
+
+  assign thumb_param = request.params.thumb
+  assign video_param = request.params.url
+%}
 
 <meta property="og:site_name" content="{{ shop.name }}">
 <meta property="og:url" content="{{ og_url }}">
@@ -59,48 +62,16 @@
 <meta property="og:type" content="{{ og_type }}">
 <meta property="og:description" content="{{ og_description | escape }}">
 
-{%- comment -%}
---------------------------------------------------------------------
-✅ CUSTOM HANDLING FOR VIDEO PAGE (/pages/video)
---------------------------------------------------------------------
-This overrides the default OG image & video metadata
-when the visitor shares a video page URL that contains
-parameters ?url=...&thumb=...
---------------------------------------------------------------------
-{%- endcomment -%}
-
-{% if request.path contains '/pages/video' %}
-  {% assign thumbnail_url = request.params.thumb | url_decode %}
-  {% assign video_url = request.params.url | url_decode %}
-  {% assign full_page_url = shop.url | append: request.path | append: "?" | append: request.query_string %}
-
-  {% if thumbnail_url != blank %}
-    <meta property="og:image" content="{{ thumbnail_url | replace: 'http:', 'https:' }}">
-    <meta property="og:image:secure_url" content="{{ thumbnail_url | replace: 'http:', 'https:' }}">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta name="twitter:image" content="{{ thumbnail_url }}">
-  {% else %}
-    <!-- Fallback image if no thumbnail -->
-    <meta property="og:image" content="{{ 'video-thumbnail.jpg' | asset_url | prepend: shop.url }}">
-    <meta name="twitter:image" content="{{ 'video-thumbnail.jpg' | asset_url | prepend: shop.url }}">
-  {% endif %}
-
-  {% if video_url != blank %}
-    <!-- Optional video metadata -->
-    <meta property="og:video" content="{{ video_url }}">
-    <meta property="og:video:secure_url" content="{{ video_url }}">
-    <meta property="og:video:type" content="video/mp4">
-    <meta property="og:video:width" content="1280">
-    <meta property="og:video:height" content="720">
-  {% endif %}
-{% elsif page_image %}
-  <!-- Default OG image if it's a normal page -->
+{%- if thumb_param %}
+  <meta property="og:image" content="{{ thumb_param | url_decode }}">
+  <meta property="og:image:secure_url" content="{{ thumb_param | url_decode }}">
+  <meta name="twitter:image" content="{{ thumb_param | url_decode }}">
+{%- elsif page_image -%}
   <meta property="og:image" content="http:{{ page_image | image_url }}">
   <meta property="og:image:secure_url" content="https:{{ page_image | image_url }}">
   <meta property="og:image:width" content="{{ page_image.width }}">
   <meta property="og:image:height" content="{{ page_image.height }}">
-{% endif %}
+{%- endif -%}
 
 {%- if request.page_type == 'product' -%}
   <meta property="og:price:amount" content="{{ product.price | money_without_currency | strip_html }}">
