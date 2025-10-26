@@ -441,7 +441,7 @@ document.addEventListener("DOMContentLoaded", function() {
             <source src="${videoUrl}" type="video/mp4">
             Your browser does not support the video tag.
           </video>
-          <img src="${thumbUrl}" alt="Video thumbnail" />
+          {% comment %} <img src="${thumbUrl}" alt="Video thumbnail" /> {% endcomment %}
         `;
       } else {
         wrapper.innerHTML = `
