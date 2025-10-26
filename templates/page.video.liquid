@@ -253,7 +253,7 @@ document.addEventListener("DOMContentLoaded", function() {
     </div> {% endcomment %}
   </div>
 
-  <div id="video-wrapper">
+  {% comment %} <div id="video-wrapper">
   <video width="800" height="450" controls autoplay muted playsinline>
     <source src="{{ request.query.url }}" type="video/mp4">
     Your browser does not support the video tag.
@@ -261,7 +261,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   {% if request.query.thumb %}
     <img src="{{ request.query.thumb }}" alt="Video Thumbnail" width="800" height="450" style="margin-top: 20px; max-width: 800px; border-radius: 12px;">
-  {% endif %}
+  {% endif %} {% endcomment %}
 </div>
 
 
