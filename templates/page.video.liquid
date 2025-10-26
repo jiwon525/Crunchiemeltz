@@ -228,18 +228,24 @@ document.addEventListener("DOMContentLoaded", function() {
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Video Page</title>
+  <title>{{ page_title | default: "Watch this video" }}</title>
 
-  <!-- Default Open Graph (fallbacks in case no JS) -->
-  <meta property="og:title" content="Watch this video" />
+  
+  {% assign thumb_url = request.query.thumb | default: 'video-thumbnail.jpg' | asset_url %}
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:title" content="{{ page_title | default: 'Watch this video' }}" />
   <meta property="og:type" content="video.other" />
   <meta property="og:url" content="{{ shop.url }}{{ request.path }}" />
   <meta property="og:description" content="Check out this video shared from our store!" />
-  <meta property="og:image" content="{{ 'video-thumbnail.jpg' | asset_url | prepend: shop.url }}" />
+  <meta property="og:image" content="{{ thumb_url }}" />
+  <meta property="og:image:secure_url" content="{{ thumb_url | prepend: 'https:' }}" />
 
+  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Watch this video" />
+  <meta name="twitter:title" content="{{ page_title | default: 'Watch this video' }}" />
   <meta name="twitter:description" content="Check out this video shared from our store!" />
+  <meta name="twitter:image" content="{{ thumb_url }}" />
 </head>
 
 <body>
@@ -251,6 +257,18 @@ document.addEventListener("DOMContentLoaded", function() {
       <!-- Thumbnail will appear here -->
     </div> {% endcomment %}
   </div>
+
+  <div id="video-wrapper">
+  <video width="800" height="450" controls autoplay muted playsinline>
+    <source src="{{ request.query.url }}" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  {% if request.query.thumb %}
+    <img src="{{ request.query.thumb }}" alt="Video Thumbnail" style="margin-top: 20px; max-width: 800px; border-radius: 12px;">
+  {% endif %}
+</div>
+
 
   <style>
     .video-page-container {
