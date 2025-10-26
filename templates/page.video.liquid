@@ -231,21 +231,16 @@ document.addEventListener("DOMContentLoaded", function() {
   <title>{{ page_title | default: "Watch this video" }}</title>
 
   
-  {% assign thumb_url = request.query.thumb | default: 'video-thumbnail.jpg' | asset_url %}
+  {% assign thumb_file = request.query.thumb | default: 'video-thumbnail.jpg' %}
+  {% assign thumb_url = thumb_file | asset_url %}
 
   <!-- Open Graph / Facebook -->
-  <meta property="og:title" content="{{ page_title | default: 'Watch this video' }}" />
-  <meta property="og:type" content="video.other" />
-  <meta property="og:url" content="{{ shop.url }}{{ request.path }}" />
-  <meta property="og:description" content="Check out this video shared from our store!" />
   <meta property="og:image" content="{{ thumb_url }}" />
   <meta property="og:image:secure_url" content="{{ thumb_url | prepend: 'https:' }}" />
 
   <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="{{ page_title | default: 'Watch this video' }}" />
-  <meta name="twitter:description" content="Check out this video shared from our store!" />
   <meta name="twitter:image" content="{{ thumb_url }}" />
+
 </head>
 
 <body>
