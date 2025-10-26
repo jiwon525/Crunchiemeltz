@@ -132,8 +132,10 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   </script>
 </body>
-</html>```````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````` {% endcomment %}
-<!DOCTYPE html>
+</html>`
+
+``````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````` {% endcomment %}
+{% comment %} <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -220,10 +222,118 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   </script>
 </body>
+</html> {% endcomment %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Video Page</title>
+
+  <!-- Default Open Graph (fallbacks in case no JS) -->
+  <meta property="og:title" content="Watch this video" />
+  <meta property="og:type" content="video.other" />
+  <meta property="og:url" content="{{ shop.url }}{{ request.path }}" />
+  <meta property="og:description" content="Check out this video shared from our store!" />
+  <meta property="og:image" content="{{ 'video-thumbnail.jpg' | asset_url | prepend: shop.url }}" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Watch this video" />
+  <meta name="twitter:description" content="Check out this video shared from our store!" />
+</head>
+
+<body>
+  <div class="video-page-container">
+    <div id="video-wrapper">
+      <p>Loading video...</p>
+    </div>
+    <div id="thumbnail-wrapper" style="margin-top: 20px; text-align: center;">
+      <!-- Thumbnail will appear here -->
+    </div>
+  </div>
+
+  <style>
+    .video-page-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 50px 20px;
+    }
+
+    #video-wrapper video {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
+
+    #thumbnail-wrapper img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
+  </style>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const params = new URLSearchParams(window.location.search);
+      const videoUrl = params.get("url");
+      const thumbUrl = params.get("thumb");
+      const wrapper = document.getElementById("video-wrapper");
+      const thumbWrapper = document.getElementById("thumbnail-wrapper");
+
+      // Render video
+      if (videoUrl) {
+        wrapper.innerHTML = `
+          <video width="800" height="450" controls autoplay muted playsinline controlsList="nodownload">
+            <source src="${decodeURIComponent(videoUrl)}" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        `;
+      } else {
+        wrapper.innerHTML = `
+          <p class="no-video">No video selected. Please go back to the 
+            <a href="{{ routes.root_url }}">homepage</a>.
+          </p>
+        `;
+      }
+
+      // Render thumbnail below the video
+      if (thumbUrl) {
+        thumbWrapper.innerHTML = `<img src="${decodeURIComponent(thumbUrl)}" alt="Video thumbnail">`;
+
+        // Optional: dynamically inject OG tags for social sharing
+        const metaTags = [
+          { property: "og:image", content: decodeURIComponent(thumbUrl) },
+          { property: "og:image:secure_url", content: decodeURIComponent(thumbUrl) },
+          { name: "twitter:image", content: decodeURIComponent(thumbUrl) }
+        ];
+
+        metaTags.forEach(tag => {
+          const meta = document.createElement("meta");
+          if (tag.property) meta.setAttribute("property", tag.property);
+          if (tag.name) meta.setAttribute("name", tag.name);
+          meta.setAttribute("content", tag.content);
+          document.head.appendChild(meta);
+        });
+
+        console.log("✅ Thumbnail rendered and OG tags injected:", decodeURIComponent(thumbUrl));
+      } else {
+        console.warn("⚠️ No thumbnail provided in URL.");
+      }
+    });
+  </script>
+</body>
 </html>
 
 
-{% comment %} <!DOCTYPE html>
+{% comment %} 
+
+with thumbnail appearing on top of the video
+ 
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
