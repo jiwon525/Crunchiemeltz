@@ -1,4 +1,4 @@
-{% comment %} <div class="video-page-container">
+<div class="video-page-container">
   <div id="video-wrapper">
     <p>Loading video...</p>
   </div>
@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function() {
     `;
   }
 });
-</script> {% endcomment %}
+</script> 
 
 {% comment %} <!DOCTYPE html>
 <html lang="en">
@@ -342,118 +342,7 @@ document.addEventListener("DOMContentLoaded", function() {
 </body>
 </html> {% endcomment %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Video Page</title>
 
-  <!-- ✅ Hard-coded Open Graph tags (fallback for crawlers) -->
-  <meta property="og:title" content="Watch this video" />
-  <meta property="og:type" content="video.other" />
-  <meta property="og:url" content="{{ shop.url }}{{ request.path }}" />
-  <meta property="og:description" content="Check out this video shared from our store!" />
-
-  {% comment %}
-    Map videos to thumbnails (Liquid side)
-  {% endcomment %}
-  {% assign video_map = 
-    {
-      "https://cdn.shopify.com/videos/video1.mp4": "https://cdn.shopify.com/thumbnails/video1.jpg",
-      "https://cdn.shopify.com/videos/video2.mp4": "https://cdn.shopify.com/thumbnails/video2.jpg"
-    } 
-  %}
-
-  {% assign default_video_url = video_map | keys | first %}
-  <meta property="og:image" content="{{ video_map[default_video_url] }}" />
-  <meta property="og:image:secure_url" content="https://cdn.shopify.com/s/files/1/0624/4938/5514/files/Slide1.jpg?v=1760125278" />
-  <meta name="twitter:image" content="{{ video_map[default_video_url] }}" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Watch this video" />
-  <meta name="twitter:description" content="Check out this video shared from our store!" />
-
-  <style>
-    .video-page-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      padding: 50px 20px;
-    }
-    #video-wrapper video {
-      max-width: 100%;
-      height: auto;
-      border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-    }
-    #video-wrapper img {
-      margin-top: 16px;
-      max-width: 800px;
-      border-radius: 8px;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.15);
-    }
-  </style>
-</head>
-
-<body>
-  <div class="video-page-container">
-    <div id="video-wrapper">
-      <p>Loading video...</p>
-    </div>
-  </div>
-
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      const params = new URLSearchParams(window.location.search);
-      const videoUrl = params.get("url"); // ?url=<video_url>
-      const wrapper = document.getElementById("video-wrapper");
-
-      // ✅ Video → thumbnail mapping (JS side)
-      const videoMap = {
-        "https://cdn.shopify.com/videos/c/o/v/b05443156c5e4b6cb84ce68e2ba375bc.mov": "https://cdn.shopify.com/s/files/1/0624/4938/5514/files/Slide1.jpg?v=1760125278",
-        "https://cdn.shopify.com/videos/c/o/v/ac21774d6b964860b238cc7cc0809ef9.mov": "https://cdn.shopify.com/s/files/1/0624/4938/5514/files/Slide2_b7181901-69ad-4388-8215-d4a70b15af7f.jpg?v=1760125085",
-        "https://cdn.shopify.com/videos/c/o/v/68fd8dc518434440a05095a8450f5817.mov": "https://cdn.shopify.com/s/files/1/0624/4938/5514/files/Slide3_4699ad95-e591-443c-8070-e9420fff0c0b.jpg?v=1760125239",
-        "https://cdn.shopify.com/videos/c/o/v/a252542cefba454d9ccbda46beabb1eb.mov": "https://cdn.shopify.com/s/files/1/0624/4938/5514/files/Slide5_82c19c2b-50df-4969-b747-90ed898dc335.jpg?v=1760125328",
-        "https://cdn.shopify.com/videos/c/o/v/cb8191ff965043968d402acabe8289ab.mov": "https://cdn.shopify.com/s/files/1/0624/4938/5514/files/Slide5_82c19c2b-50df-4969-b747-90ed898dc335.jpg?v=1760125328",
-      };
-
-      if (videoUrl && videoMap[videoUrl]) {
-        const thumbUrl = videoMap[videoUrl];
-
-        // Inject dynamic OG tags for in-page use
-        const metaTags = [
-          { property: "og:image", content: thumbUrl },
-          { property: "og:image:secure_url", content: thumbUrl },
-          { name: "twitter:image", content: thumbUrl }
-        ];
-
-        metaTags.forEach(tag => {
-          const meta = document.createElement("meta");
-          if (tag.property) meta.setAttribute("property", tag.property);
-          if (tag.name) meta.setAttribute("name", tag.name);
-          meta.setAttribute("content", tag.content);
-          document.head.appendChild(meta);
-        });
-
-        // Render video + thumbnail
-        wrapper.innerHTML = `
-          <video width="800" height="450" controls autoplay muted playsinline controlsList="nodownload">
-            <source src="${videoUrl}" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
-          {% comment %} <img src="${thumbUrl}" alt="Video thumbnail" /> {% endcomment %}
-        `;
-      } else {
-        wrapper.innerHTML = `
-          <p>No video selected. Please go back to the 
-            <a href="{{ routes.root_url }}">homepage</a>.
-          </p>
-        `;
-      }
-    });
-  </script>
-</body>
-</html>
 
 
 {% comment %} 
