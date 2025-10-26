@@ -139,6 +139,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Watch this video</title>
@@ -174,6 +175,22 @@ document.addEventListener("DOMContentLoaded", function() {
     <meta name="twitter:title" content="Watch this video" />
     <meta name="twitter:description" content="Check out this video from Crunchie Meltz 🍪" />
   {% endif %}
+
+  {% if thumbnail_url %}
+  {% comment %}DEBUG: Show what thumbnail_url resolves to{% endcomment %}
+  <script>
+    console.log("Thumbnail URL:", "{{ thumbnail_url | escape }}");
+  </script>
+
+  <p style="color:red; font-weight:bold;">
+    DEBUG → og:image:secure_url = {{ thumbnail_url }}
+  </p>
+{% else %}
+  <p style="color:red; font-weight:bold;">
+    DEBUG → No thumbnail_url detected.
+  </p>
+{% endif %}
+
 </head>
 
 <body>
