@@ -176,7 +176,7 @@ document.addEventListener("DOMContentLoaded", function() {
     <meta name="twitter:image" content="{{ 'default-thumbnail.jpg' | asset_url | prepend: 'https:' }}" />
   {% endif %}
 
-    <style>
+  <style>
     body {
       font-family: sans-serif;
       background: #fafafa;
@@ -201,15 +201,10 @@ document.addEventListener("DOMContentLoaded", function() {
       background-color: #000;
     }
 
-    /* ✅ Thumbnail fits exactly in the 16:9 container */
     .thumbnail {
-      position: absolute;
-      top: 0;
-      left: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
-      border-radius: 16px;
       transition: transform 0.3s ease;
     }
 
@@ -229,7 +224,6 @@ document.addEventListener("DOMContentLoaded", function() {
       border-radius: 50%;
       border: 3px solid white;
       transition: background 0.3s ease;
-      z-index: 2;
     }
 
     .play-button:hover {
@@ -237,18 +231,12 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     video {
-      position: absolute;
-      top: 0;
-      left: 0;
       width: 100%;
       height: 100%;
       display: none;
       border-radius: 16px;
-      object-fit: cover;
-      z-index: 1;
     }
   </style>
-
 </head>
 
 <body>
