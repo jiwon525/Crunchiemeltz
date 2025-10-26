@@ -139,25 +139,24 @@ document.addEventListener("DOMContentLoaded", function() {
   <meta charset="UTF-8">
   <title>Video Page</title>
 
-  {% comment %}
-    ✅ Dynamically set thumbnail and video from URL params or fallback defaults
-  {% endcomment %}
-  {% assign video_url = request.params.url | url_decode %}
-  {% assign thumb_url = request.params.thumb | url_decode | default: 'video-thumbnail.jpg' %}
-
-  <!-- Open Graph -->
+  <!-- ✅ Default Open Graph (fallbacks in case no JS) -->
   <meta property="og:title" content="Watch this video" />
   <meta property="og:type" content="video.other" />
   <meta property="og:url" content="{{ shop.url }}{{ request.path }}" />
   <meta property="og:description" content="Check out this video shared from our store!" />
-  <meta property="og:image" content="{{ thumb_url | asset_url | prepend: shop.url }}" />
-  <meta property="og:image:secure_url" content="{{ thumb_url | asset_url | prepend: 'https:' }}" />
+  <meta property="og:image" content="{{ 'video-thumbnail.jpg' | asset_url | prepend: shop.url }}" />
 
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Watch this video" />
   <meta name="twitter:description" content="Check out this video shared from our store!" />
-  <meta name="twitter:image" content="{{ thumb_url | asset_url | prepend: shop.url }}" />
+</head>
+
+<body>
+  <div class="video-page-container">
+    <div id="video-wrapper">
+      <p>Loading video...</p>
+    </div>
+  </div>
 
   <style>
     .video-page-container {
@@ -167,80 +166,56 @@ document.addEventListener("DOMContentLoaded", function() {
       flex-direction: column;
       padding: 50px 20px;
     }
-    #video-wrapper {
-      position: relative;
-      width: 100%;
-      max-width: 800px;
-      aspect-ratio: 16/9;
-      background: #000;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-      cursor: pointer;
-    }
-    #video-wrapper img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.3s ease;
-    }
-    #video-wrapper img:hover {
-      transform: scale(1.02);
-    }
     #video-wrapper video {
-      width: 100%;
-      height: 100%;
-      display: none;
+      max-width: 100%;
+      height: auto;
       border-radius: 12px;
-    }
-    .play-button {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: rgba(0,0,0,0.6);
-      color: #fff;
-      font-size: 50px;
-      padding: 20px 28px;
-      border-radius: 50%;
-      border: 3px solid #fff;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-    .play-button:hover {
-      background: rgba(255,255,255,0.2);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
     }
   </style>
-</head>
-
-<body>
-  <div class="video-page-container">
-    <div id="video-wrapper">
-      <img id="thumbnail" src="{{ thumb_url | asset_url }}" alt="Video thumbnail" />
-      <div class="play-button">▶</div>
-      {% if video_url %}
-        <video id="video" controls playsinline>
-          <source src="{{ video_url }}" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-      {% endif %}
-    </div>
-  </div>
 
   <script>
     document.addEventListener("DOMContentLoaded", function() {
-      const container = document.getElementById("video-wrapper");
-      const video = document.getElementById("video");
-      const thumbnail = document.getElementById("thumbnail");
-      const playButton = document.querySelector(".play-button");
+      const params = new URLSearchParams(window.location.search);
+      const videoUrl = params.get("url");
+      const thumbUrl = params.get("thumb");
+      const wrapper = document.getElementById("video-wrapper");
 
-      if (video) {
-        container.addEventListener("click", function() {
-          thumbnail.style.display = "none";
-          playButton.style.display = "none";
-          video.style.display = "block";
-          video.play();
+      // ✅ Inject correct OG tags dynamically
+      if (thumbUrl) {
+        const metaTags = [
+          { property: "og:image", content: decodeURIComponent(thumbUrl) },
+          { property: "og:image:secure_url", content: decodeURIComponent(thumbUrl) },
+          { name: "twitter:image", content: decodeURIComponent(thumbUrl) }
+        ];
+
+        metaTags.forEach(tag => {
+          const meta = document.createElement("meta");
+          if (tag.property) meta.setAttribute("property", tag.property);
+          if (tag.name) meta.setAttribute("name", tag.name);
+          meta.setAttribute("content", tag.content);
+          document.head.appendChild(meta);
         });
+
+        console.log("✅ Injected OG image:", decodeURIComponent(thumbUrl));
+      } else {
+        console.warn("⚠️ No thumbnail provided in URL.");
+      }
+
+      // ✅ Render video
+      if (videoUrl) {
+        wrapper.innerHTML = `
+          <video width="800" height="450" controls autoplay muted playsinline controlsList="nodownload">
+            <source src="${decodeURIComponent(videoUrl)}" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        `;
+      } else {
+        wrapper.innerHTML = `
+          <p class="no-video">No video selected. Please go back to the 
+            <a href="{{ routes.root_url }}">homepage</a>.
+          </p>
+        `;
       }
     });
   </script>
