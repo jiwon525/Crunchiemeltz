@@ -139,24 +139,25 @@ document.addEventListener("DOMContentLoaded", function() {
   <meta charset="UTF-8">
   <title>Video Page</title>
 
-  <!-- ✅ Default Open Graph (fallbacks in case no JS) -->
+  {% comment %}
+    ✅ Dynamically set thumbnail and video from URL params or fallback defaults
+  {% endcomment %}
+  {% assign video_url = request.params.url | url_decode %}
+  {% assign thumb_url = request.params.thumb | url_decode | default: 'video-thumbnail.jpg' %}
+
+  <!-- Open Graph -->
   <meta property="og:title" content="Watch this video" />
   <meta property="og:type" content="video.other" />
   <meta property="og:url" content="{{ shop.url }}{{ request.path }}" />
   <meta property="og:description" content="Check out this video shared from our store!" />
-  <meta property="og:image" content="{{ 'video-thumbnail.jpg' | asset_url | prepend: shop.url }}" />
+  <meta property="og:image" content="{{ thumb_url | asset_url | prepend: shop.url }}" />
+  <meta property="og:image:secure_url" content="{{ thumb_url | asset_url | prepend: 'https:' }}" />
 
+  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Watch this video" />
   <meta name="twitter:description" content="Check out this video shared from our store!" />
-</head>
-
-<body>
-  <div class="video-page-container">
-    <div id="video-wrapper">
-      <p>Loading video...</p>
-    </div>
-  </div>
+  <meta name="twitter:image" content="{{ thumb_url | asset_url | prepend: shop.url }}" />
 
   <style>
     .video-page-container {
@@ -166,22 +167,215 @@ document.addEventListener("DOMContentLoaded", function() {
       flex-direction: column;
       padding: 50px 20px;
     }
-    #video-wrapper video {
-      max-width: 100%;
-      height: auto;
+    #video-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 800px;
+      aspect-ratio: 16/9;
+      background: #000;
       border-radius: 12px;
+      overflow: hidden;
       box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      cursor: pointer;
+    }
+    #video-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+    #video-wrapper img:hover {
+      transform: scale(1.02);
+    }
+    #video-wrapper video {
+      width: 100%;
+      height: 100%;
+      display: none;
+      border-radius: 12px;
+    }
+    .play-button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(0,0,0,0.6);
+      color: #fff;
+      font-size: 50px;
+      padding: 20px 28px;
+      border-radius: 50%;
+      border: 3px solid #fff;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .play-button:hover {
+      background: rgba(255,255,255,0.2);
     }
   </style>
+</head>
+
+<body>
+  <div class="video-page-container">
+    <div id="video-wrapper">
+      <img id="thumbnail" src="{{ thumb_url | asset_url }}" alt="Video thumbnail" />
+      <div class="play-button">▶</div>
+      {% if video_url %}
+        <video id="video" controls playsinline>
+          <source src="{{ video_url }}" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      {% endif %}
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const container = document.getElementById("video-wrapper");
+      const video = document.getElementById("video");
+      const thumbnail = document.getElementById("thumbnail");
+      const playButton = document.querySelector(".play-button");
+
+      if (video) {
+        container.addEventListener("click", function() {
+          thumbnail.style.display = "none";
+          playButton.style.display = "none";
+          video.style.display = "block";
+          video.play();
+        });
+      }
+    });
+  </script>
+</body>
+</html>
+
+
+{% comment %} <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Watch Video | {{ shop.name }}</title>
+
+  {% assign video_url = request.params.url | url_decode %}
+  {% assign thumbnail_url = request.params.thumb | url_decode %}
+  {% assign full_page_url = shop.url | append: request.path | append: "?" | append: request.query_string %}
+
+  <!-- ✅ Open Graph Tags (Telegram, Facebook, WhatsApp) -->
+  <meta property="og:title" content="Watch this video from {{ shop.name }}" />
+  <meta property="og:type" content="video.other" />
+  <meta property="og:url" content="{{ full_page_url }}" />
+  <meta property="og:description" content="Check out this video shared from {{ shop.name }}!" />
+
+  {% if thumbnail_url != blank %}
+    <meta property="og:image" content="{{ thumbnail_url }}" />
+    <meta property="og:image:secure_url" content="{{ thumbnail_url }}" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+  {% else %}
+    <meta property="og:image" content="{{ 'default-thumbnail.jpg' | asset_url | prepend: 'https:' }}" />
+    <meta property="og:image:secure_url" content="{{ 'default-thumbnail.jpg' | asset_url | prepend: 'https:' }}" />
+  {% endif %}
+
+  {% if video_url != blank %}
+    <meta property="og:video" content="{{ video_url }}" />
+    <meta property="og:video:type" content="video/mp4" />
+    <meta property="og:video:width" content="1280" />
+    <meta property="og:video:height" content="720" />
+  {% endif %}
+
+  <!-- ✅ Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Watch this video from {{ shop.name }}" />
+  <meta name="twitter:description" content="Check out this video shared from {{ shop.name }}!" />
+  {% if thumbnail_url != blank %}
+    <meta name="twitter:image" content="{{ thumbnail_url }}" />
+  {% else %}
+    <meta name="twitter:image" content="{{ 'default-thumbnail.jpg' | asset_url | prepend: 'https:' }}" />
+  {% endif %}
+
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #fafafa;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 40px 20px;
+    }
+
+    .video-container {
+      position: relative;
+      width: 100%;
+      max-width: 800px;
+      aspect-ratio: 16/9;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 30px rgba(0,0,0,0.2);
+      cursor: pointer;
+      background-color: #000;
+    }
+
+    .thumbnail {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .thumbnail:hover {
+      transform: scale(1.02);
+    }
+
+    .play-button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(0, 0, 0, 0.6);
+      color: white;
+      font-size: 50px;
+      padding: 20px 28px;
+      border-radius: 50%;
+      border: 3px solid white;
+      transition: background 0.3s ease;
+    }
+
+    .play-button:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    video {
+      width: 100%;
+      height: 100%;
+      display: none;
+      border-radius: 16px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="video-container" id="video-container">
+    <img id="thumbnail" class="thumbnail" src="{{ 'default-thumbnail.jpg' | asset_url }}" alt="Video thumbnail" />
+    <div class="play-button">▶</div>
+    <video id="video" controls playsinline>
+      <source id="video-source" src="" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
 
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       const params = new URLSearchParams(window.location.search);
       const videoUrl = params.get("url");
       const thumbUrl = params.get("thumb");
-      const wrapper = document.getElementById("video-wrapper");
+      const video = document.getElementById("video");
+      const source = document.getElementById("video-source");
+      const container = document.getElementById("video-container");
+      const thumbnail = document.getElementById("thumbnail");
+      const playButton = document.querySelector(".play-button");
 
-      // ✅ Inject correct OG tags dynamically
+      // ✅ Dynamically inject Open Graph meta tags
       if (thumbUrl) {
         const metaTags = [
           { property: "og:image", content: decodeURIComponent(thumbUrl) },
@@ -198,26 +392,25 @@ document.addEventListener("DOMContentLoaded", function() {
         });
 
         console.log("✅ Injected OG image:", decodeURIComponent(thumbUrl));
+        thumbnail.src = decodeURIComponent(thumbUrl);
       } else {
         console.warn("⚠️ No thumbnail provided in URL.");
       }
 
-      // ✅ Render video
+      // ✅ Assign video URL
       if (videoUrl) {
-        wrapper.innerHTML = `
-          <video width="800" height="450" controls autoplay muted playsinline controlsList="nodownload">
-            <source src="${decodeURIComponent(videoUrl)}" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
-        `;
-      } else {
-        wrapper.innerHTML = `
-          <p class="no-video">No video selected. Please go back to the 
-            <a href="{{ routes.root_url }}">homepage</a>.
-          </p>
-        `;
+        source.src = decodeURIComponent(videoUrl);
+        video.load();
       }
+
+      // 🎬 On click: hide thumbnail, show video
+      container.addEventListener("click", function() {
+        thumbnail.style.display = "none";
+        playButton.style.display = "none";
+        video.style.display = "block";
+        video.play();
+      });
     });
   </script>
 </body>
-</html>
+</html> {% endcomment %}
