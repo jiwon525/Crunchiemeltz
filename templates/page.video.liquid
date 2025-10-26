@@ -133,50 +133,22 @@ document.addEventListener("DOMContentLoaded", function() {
   </script>
 </body>
 </html>```````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````` {% endcomment %}
-{% assign video_url = request.params.url | url_decode %}
-{% assign thumbnail_url = request.params.thumb | url_decode %}
-{% assign full_page_url = shop.url | append: request.path | append: "?" | append: request.query_string %}
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
-  <title>Watch this video</title>
-  
-  {% if video_url != blank %}
-    <!-- ✅ Override Shopify default OG tags -->
-    <meta property="og:title" content="Watch this video from Crunchie Meltz 🍪" />
-    <meta property="og:type" content="video.other" />
-    <meta property="og:url" content="{{ full_page_url }}" />
-    <meta property="og:description" content="Check out this video shared from our store!" />
+  <title>Video Page</title>
 
-    {% if thumbnail_url != blank %}
-      <!-- ✅ Custom thumbnail -->
-      <meta property="og:image" content="{{ thumbnail_url | replace: 'http:', 'https:' }}" />
-      <meta property="og:image:secure_url" content="{{ thumbnail_url | replace: 'http:', 'https:' }}" />
-      <meta property="og:image:width" content="1200" />
-      <meta property="og:image:height" content="630" />
-      <meta name="twitter:image" content="{{ thumbnail_url | replace: 'http:', 'https:' }}" />
-    {% else %}
-      <!-- fallback if no thumbnail -->
-      <meta property="og:image" content="{{ 'video-thumbnail.jpg' | asset_url | prepend: shop.url }}" />
-      <meta name="twitter:image" content="{{ 'video-thumbnail.jpg' | asset_url | prepend: shop.url }}" />
-    {% endif %}
+  <!-- ✅ Default Open Graph (fallbacks in case no JS) -->
+  <meta property="og:title" content="Watch this video" />
+  <meta property="og:type" content="video.other" />
+  <meta property="og:url" content="{{ shop.url }}{{ request.path }}" />
+  <meta property="og:description" content="Check out this video shared from our store!" />
+  <meta property="og:image" content="{{ 'video-thumbnail.jpg' | asset_url | prepend: shop.url }}" />
 
-    <!-- ✅ Video tags -->
-    <meta property="og:video" content="{{ video_url }}" />
-    <meta property="og:video:type" content="video/mp4" />
-    <meta property="og:video:width" content="1280" />
-    <meta property="og:video:height" content="720" />
-
-    <!-- ✅ Twitter -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Watch this video" />
-    <meta name="twitter:description" content="Check out this video from Crunchie Meltz 🍪" />
-  {% endif %}
-
-  
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Watch this video" />
+  <meta name="twitter:description" content="Check out this video shared from our store!" />
 </head>
 
 <body>
@@ -206,8 +178,31 @@ document.addEventListener("DOMContentLoaded", function() {
     document.addEventListener("DOMContentLoaded", function() {
       const params = new URLSearchParams(window.location.search);
       const videoUrl = params.get("url");
+      const thumbUrl = params.get("thumb");
       const wrapper = document.getElementById("video-wrapper");
 
+      // ✅ Inject correct OG tags dynamically
+      if (thumbUrl) {
+        const metaTags = [
+          { property: "og:image", content: decodeURIComponent(thumbUrl) },
+          { property: "og:image:secure_url", content: decodeURIComponent(thumbUrl) },
+          { name: "twitter:image", content: decodeURIComponent(thumbUrl) }
+        ];
+
+        metaTags.forEach(tag => {
+          const meta = document.createElement("meta");
+          if (tag.property) meta.setAttribute("property", tag.property);
+          if (tag.name) meta.setAttribute("name", tag.name);
+          meta.setAttribute("content", tag.content);
+          document.head.appendChild(meta);
+        });
+
+        console.log("✅ Injected OG image:", decodeURIComponent(thumbUrl));
+      } else {
+        console.warn("⚠️ No thumbnail provided in URL.");
+      }
+
+      // ✅ Render video
       if (videoUrl) {
         wrapper.innerHTML = `
           <video width="800" height="450" controls autoplay muted playsinline controlsList="nodownload">
