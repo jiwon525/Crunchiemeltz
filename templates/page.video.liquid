@@ -143,10 +143,7 @@ document.addEventListener("DOMContentLoaded", function() {
 <head>
   <meta charset="UTF-8">
   <title>Watch this video</title>
-  <p style="color:purple; font-weight:bold;">
-  DEBUG → Query string: {{ request.query_string }}
-  </p>
-
+  
   {% if video_url != blank %}
     <!-- ✅ Override Shopify default OG tags -->
     <meta property="og:title" content="Watch this video from Crunchie Meltz 🍪" />
