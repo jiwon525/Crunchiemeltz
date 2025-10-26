@@ -137,66 +137,42 @@ document.addEventListener("DOMContentLoaded", function() {
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Watch this video | {{ shop.name }}</title>
+  <title>Watch Video | {{ shop.name }}</title>
 
-  {% assign video_url = request.params.url | url_decode %}
-  {% assign thumbnail_url = request.params.thumb | url_decode %}
-  {% assign full_page_url = shop.url | append: request.path | append: "?" | append: request.query_string %}
-
-  <!-- ✅ Dynamic Open Graph meta for Telegram/Facebook -->
-  <meta property="og:title" content="🎬 Watch this video from {{ shop.name }}" />
+  <!-- ✅ Default Open Graph tags (used before JS injection) -->
+  <meta property="og:title" content="Watch this video" />
   <meta property="og:type" content="video.other" />
-  <meta property="og:url" content="{{ full_page_url }}" />
-  <meta property="og:description" content="Check out this video shared from {{ shop.name }}!" />
+  <meta property="og:url" content="{{ shop.url }}{{ request.path }}" />
+  <meta property="og:description" content="Check out this video shared from our store!" />
+  <meta property="og:image" content="{{ 'default-thumbnail.jpg' | asset_url }}" />
 
-  {% if thumbnail_url != blank %}
-    <meta property="og:image" content="{{ thumbnail_url }}" />
-    <meta property="og:image:secure_url" content="{{ thumbnail_url }}" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-  {% else %}
-    <meta property="og:image" content="{{ 'Crunchie_Meltz_Logo_Final-02_1_152d3d90-f8fa-4272-8d49-72a7c5cc3003.jpg' | file_img_url: '1200x630' | prepend: 'https:' }}" />
-  {% endif %}
-
-  <!-- ✅ Video meta -->
-  {% if video_url != blank %}
-    <meta property="og:video" content="{{ video_url }}" />
-    <meta property="og:video:type" content="video/mp4" />
-    <meta property="og:video:width" content="1280" />
-    <meta property="og:video:height" content="720" />
-  {% endif %}
-
-  <!-- ✅ Twitter card meta -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Watch this video from {{ shop.name }}" />
-  <meta name="twitter:description" content="Check out this video shared from {{ shop.name }}!" />
-  {% if thumbnail_url != blank %}
-    <meta name="twitter:image" content="{{ thumbnail_url }}" />
-  {% else %}
-    <meta name="twitter:image" content="{{ 'Crunchie_Meltz_Logo_Final-02_1_152d3d90-f8fa-4272-8d49-72a7c5cc3003.jpg' | file_img_url: '1200x630' | prepend: 'https:' }}" />
-  {% endif %}
+  <meta name="twitter:title" content="Watch this video" />
+  <meta name="twitter:description" content="Check out this video shared from our store!" />
 
   <style>
     body {
-      font-family: system-ui, sans-serif;
-      background: #fdfdfd;
-      margin: 0;
-      padding: 40px 20px;
+      font-family: sans-serif;
+      background: #fafafa;
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 40px 20px;
     }
 
     .video-container {
       position: relative;
       width: 100%;
       max-width: 800px;
-      aspect-ratio: 16 / 9;
+      aspect-ratio: 16/9;
+      border-radius: 16px;
       overflow: hidden;
-      border-radius: 20px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-      background-color: #000;
+      box-shadow: 0 4px 30px rgba(0,0,0,0.2);
       cursor: pointer;
+      background-color: #000;
     }
 
     .thumbnail {
@@ -206,50 +182,90 @@ document.addEventListener("DOMContentLoaded", function() {
       transition: transform 0.3s ease;
     }
 
+    .thumbnail:hover {
+      transform: scale(1.02);
+    }
+
     .play-button {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      font-size: 60px;
+      background: rgba(0, 0, 0, 0.6);
       color: white;
-      background: rgba(0, 0, 0, 0.5);
-      padding: 15px 25px;
+      font-size: 50px;
+      padding: 20px 28px;
       border-radius: 50%;
       border: 3px solid white;
+      transition: background 0.3s ease;
+    }
+
+    .play-button:hover {
+      background: rgba(255, 255, 255, 0.2);
     }
 
     video {
       width: 100%;
       height: 100%;
       display: none;
-      border-radius: 20px;
+      border-radius: 16px;
     }
   </style>
 </head>
 
 <body>
   <div class="video-container" id="video-container">
-    <img id="thumbnail" class="thumbnail"
-      src="{% if thumbnail_url != blank %}{{ thumbnail_url }}{% else %}{{ 'Crunchie_Meltz_Logo_Final-02_1_152d3d90-f8fa-4272-8d49-72a7c5cc3003.jpg' | file_img_url: '1200x630' | prepend: 'https:' }}{% endif %}"
-      alt="Video thumbnail" />
+    <img id="thumbnail" class="thumbnail" src="{{ 'default-thumbnail.jpg' | asset_url }}" alt="Video thumbnail" />
     <div class="play-button">▶</div>
     <video id="video" controls playsinline>
-      <source id="video-source" src="{{ video_url }}" type="video/mp4">
+      <source id="video-source" src="" type="video/mp4">
       Your browser does not support the video tag.
     </video>
   </div>
 
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
+    document.addEventListener("DOMContentLoaded", function() {
+      const params = new URLSearchParams(window.location.search);
+      const videoUrl = params.get("url");
+      const thumbUrl = params.get("thumb");
       const video = document.getElementById("video");
-      const thumb = document.getElementById("thumbnail");
-      const playBtn = document.querySelector(".play-button");
+      const source = document.getElementById("video-source");
       const container = document.getElementById("video-container");
+      const thumbnail = document.getElementById("thumbnail");
+      const playButton = document.querySelector(".play-button");
 
-      container.addEventListener("click", () => {
-        thumb.style.display = "none";
-        playBtn.style.display = "none";
+      // ✅ Dynamically inject Open Graph meta tags
+      if (thumbUrl) {
+        const metaTags = [
+          { property: "og:image", content: decodeURIComponent(thumbUrl) },
+          { property: "og:image:secure_url", content: decodeURIComponent(thumbUrl) },
+          { name: "twitter:image", content: decodeURIComponent(thumbUrl) }
+        ];
+
+        metaTags.forEach(tag => {
+          const meta = document.createElement("meta");
+          if (tag.property) meta.setAttribute("property", tag.property);
+          if (tag.name) meta.setAttribute("name", tag.name);
+          meta.setAttribute("content", tag.content);
+          document.head.appendChild(meta);
+        });
+
+        console.log("✅ Injected OG image:", decodeURIComponent(thumbUrl));
+        thumbnail.src = decodeURIComponent(thumbUrl);
+      } else {
+        console.warn("⚠️ No thumbnail provided in URL.");
+      }
+
+      // ✅ Assign video URL
+      if (videoUrl) {
+        source.src = decodeURIComponent(videoUrl);
+        video.load();
+      }
+
+      // 🎬 On click: hide thumbnail, show video
+      container.addEventListener("click", function() {
+        thumbnail.style.display = "none";
+        playButton.style.display = "none";
         video.style.display = "block";
         video.play();
       });
