@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 </script> {% endcomment %}
 
-<!DOCTYPE html>
+{% comment %} <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -132,4 +132,94 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   </script>
 </body>
-</html>````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
+</html>```````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````` {% endcomment %}
+{% assign video_url = request.params.url | url_decode %}
+{% assign thumbnail_url = request.params.thumb | url_decode %}
+{% assign full_page_url = shop.url | append: request.path | append: "?" | append: request.query_string %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Watch this video</title>
+
+  {% if video_url != blank %}
+    <!-- ✅ Override Shopify default OG tags -->
+    <meta property="og:title" content="Watch this video from Crunchie Meltz 🍪" />
+    <meta property="og:type" content="video.other" />
+    <meta property="og:url" content="{{ full_page_url }}" />
+    <meta property="og:description" content="Check out this video shared from our store!" />
+
+    {% if thumbnail_url != blank %}
+      <!-- ✅ Custom thumbnail -->
+      <meta property="og:image" content="{{ thumbnail_url | replace: 'http:', 'https:' }}" />
+      <meta property="og:image:secure_url" content="{{ thumbnail_url | replace: 'http:', 'https:' }}" />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta name="twitter:image" content="{{ thumbnail_url | replace: 'http:', 'https:' }}" />
+    {% else %}
+      <!-- fallback if no thumbnail -->
+      <meta property="og:image" content="{{ 'video-thumbnail.jpg' | asset_url | prepend: shop.url }}" />
+      <meta name="twitter:image" content="{{ 'video-thumbnail.jpg' | asset_url | prepend: shop.url }}" />
+    {% endif %}
+
+    <!-- ✅ Video tags -->
+    <meta property="og:video" content="{{ video_url }}" />
+    <meta property="og:video:type" content="video/mp4" />
+    <meta property="og:video:width" content="1280" />
+    <meta property="og:video:height" content="720" />
+
+    <!-- ✅ Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Watch this video" />
+    <meta name="twitter:description" content="Check out this video from Crunchie Meltz 🍪" />
+  {% endif %}
+</head>
+
+<body>
+  <div class="video-page-container">
+    <div id="video-wrapper">
+      <p>Loading video...</p>
+    </div>
+  </div>
+
+  <style>
+    .video-page-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 50px 20px;
+    }
+    #video-wrapper video {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
+  </style>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const params = new URLSearchParams(window.location.search);
+      const videoUrl = params.get("url");
+      const wrapper = document.getElementById("video-wrapper");
+
+      if (videoUrl) {
+        wrapper.innerHTML = `
+          <video width="800" height="450" controls autoplay muted playsinline controlsList="nodownload">
+            <source src="${decodeURIComponent(videoUrl)}" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        `;
+      } else {
+        wrapper.innerHTML = `
+          <p class="no-video">No video selected. Please go back to the 
+            <a href="{{ routes.root_url }}">homepage</a>.
+          </p>
+        `;
+      }
+    });
+  </script>
+</body>
+</html>
