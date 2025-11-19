@@ -272,6 +272,18 @@
     "as_featured_on_JjNrwe": {
       "type": "as-featured-on",
       "blocks": {
+        "logo_8NEdh7": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/National_University_of_Singapore_logo_NUS.png"
+          }
+        },
+        "logo_4qpbYi": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/Aranda_logo.jpg"
+          }
+        },
         "logo_NqCWAp": {
           "type": "logo",
           "settings": {
@@ -334,6 +346,8 @@
         }
       },
       "block_order": [
+        "logo_8NEdh7",
+        "logo_4qpbYi",
         "logo_NqCWAp",
         "logo_dPeFXx",
         "logo_rnACf3",
