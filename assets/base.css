@@ -3612,7 +3612,8 @@ details-disclosure > details {
 }
 
 .article-template__hero-adapt.media {
-    
+    max-width: 100%; /* Ensures the image doesn't exceed its container's width */
+    height: auto;
     display: block;
     margin: 0 auto;
 }
