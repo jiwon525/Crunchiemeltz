@@ -13,7 +13,7 @@
   margin: 0 auto;
 }
 
-.article-template__hero-small {
+/* .article-template__hero-small {
   height: 11rem;
   width: 100%;
   object-fit: contain;
@@ -40,6 +40,32 @@
 
   .article-template__hero-large {
     height: 24rem;
+  }
+} */
+
+.article-template__hero-small {
+  height: 8rem;
+}
+
+.article-template__hero-medium {
+  height: 16rem;
+}
+
+.article-template__hero-large {
+  height: 24rem;
+}
+
+@media screen and (min-width: 990px) {
+  .article-template__hero-small {
+    height: 12rem;
+  }
+
+  .article-template__hero-medium {
+    height: 24rem;
+  }
+
+  .article-template__hero-large {
+    height: 36rem;
   }
 }
 
