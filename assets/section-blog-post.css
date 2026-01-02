@@ -179,3 +179,11 @@
 .article-template__back:last-child {
   margin-bottom: 3.2rem;
 }
+
+
+.article-template__hero-small,
+.article-template__hero-medium,
+.article-template__hero-large {
+  height: auto;
+  max-height: 40rem;
+}
