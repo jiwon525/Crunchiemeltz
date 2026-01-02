@@ -3611,6 +3611,15 @@ details-disclosure > details {
   }
 }
 
-.article-template__hero-adapt.media {
+/* .article-template__hero-adapt.media {
     padding-bottom: 50% !important;
+} */
+
+@media (min-width: 767px){
+    #shopify-section-blog-template .blog-list-view .page-width{
+    max-width: 600px;
+    width: 100%;
+    display: block;
+    margin: 0 auto;
+}
 }
