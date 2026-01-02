@@ -3612,13 +3612,7 @@ details-disclosure > details {
 }
 
 .article-template__hero-adapt.media {
-
-
-    display: block;
-
-    margin-left: auto;
-
-    margin-right: auto;
+  padding-bottom: 50%;
 }
 /* 
 @media (min-width: 767px){
