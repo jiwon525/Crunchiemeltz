@@ -3611,10 +3611,10 @@ details-disclosure > details {
   }
 }
 
-/* .article-template__hero-adapt.media {
-    padding-bottom: 50% !important;
-} */
-
+.article-template__hero-adapt.media {
+    max-width: 726px !important;
+}
+/* 
 @media (min-width: 767px){
     #shopify-section-blog-template .blog-list-view .page-width{
     max-width: 600px;
@@ -3622,4 +3622,4 @@ details-disclosure > details {
     display: block;
     margin: 0 auto;
 }
-}
+} */
