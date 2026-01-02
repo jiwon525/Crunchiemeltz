@@ -3612,7 +3612,9 @@ details-disclosure > details {
 }
 
 .article-template__hero-adapt.media {
-    max-width: 726px !important;
+    width: 100%;
+    display: block;
+    margin: 0 auto;
 }
 /* 
 @media (min-width: 767px){
