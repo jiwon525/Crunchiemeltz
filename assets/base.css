@@ -3612,9 +3612,7 @@ details-disclosure > details {
 }
 
 .article-template__hero-adapt.media {
-    max-width: 40%;
 
-    width: auto !important;
 
     display: block;
 
