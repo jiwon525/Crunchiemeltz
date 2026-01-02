@@ -24,7 +24,7 @@
         "heading"
       ],
       "settings": {
-        "image": "shopify://shop_images/FB_Cover4_Cookie_Layer_No_Reviews.jpg",
+        "image": "shopify://shop_images/FB_Covers_CrunchieDark.jpg",
         "image_overlay_opacity": 0,
         "image_height": "adapt",
         "desktop_content_position": "top-left",
@@ -42,7 +42,9 @@
       "blocks": {
         "google_reviews_plus_app_block_CPMeGB": {
           "type": "shopify://apps/rocket-google-reviews/blocks/app-block/d11c8893-a181-4aff-a280-7446d42cec3b",
-          "settings": {}
+          "settings": {
+            "widget_layout": "default"
+          }
         }
       },
       "block_order": [
