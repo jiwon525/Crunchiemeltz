@@ -3610,3 +3610,7 @@ details-disclosure > details {
     transform: translateX(100%) scaleX(0);
   }
 }
+
+.article-template__hero-adapt.media {
+    padding-bottom: 50% !important;
+}
