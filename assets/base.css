@@ -3612,9 +3612,15 @@ details-disclosure > details {
 }
 
 .article-template__hero-adapt.media {
-    max-width: 50%; /* Ensures the image doesn't exceed its container's width */
-    height: auto;
-    object-fit: cover;
+    max-width: 40%;
+
+    width: auto !important;
+
+    display: block;
+
+    margin-left: auto;
+
+    margin-right: auto;
 }
 /* 
 @media (min-width: 767px){
