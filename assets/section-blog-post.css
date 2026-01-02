@@ -24,7 +24,7 @@
 }
 
 .article-template__hero-large {
-  height: 33rem;
+  height: 24rem;
 }
 
 @media screen and (min-width: 750px) and (max-width: 989px) {
@@ -181,9 +181,3 @@
 }
 
 
-.article-template__hero-small,
-.article-template__hero-medium,
-.article-template__hero-large {
-  height: auto;
-  max-height: 40rem;
-}
