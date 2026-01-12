@@ -317,12 +317,6 @@
             "logo": "shopify://shop_images/era-real-estate-seeklogo.svg"
           }
         },
-        "logo_YeywqF": {
-          "type": "logo",
-          "settings": {
-            "logo": "shopify://shop_images/plogo-100.jpg"
-          }
-        },
         "logo_FyTkdj": {
           "type": "logo",
           "settings": {
@@ -352,6 +346,12 @@
           "settings": {
             "logo": "shopify://shop_images/THinkbox-removebg-preview.png"
           }
+        },
+        "logo_PFxrAg": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/572b08ce-6c70-486c-a34f-13af00c4ef3b.jpg"
+          }
         }
       },
       "block_order": [
@@ -361,12 +361,12 @@
         "logo_dPeFXx",
         "logo_rnACf3",
         "logo_YBrnMN",
-        "logo_YeywqF",
         "logo_FyTkdj",
         "logo_76wwkp",
         "logo_AYcHKH",
         "logo_jn8PDm",
-        "logo_UHzX6q"
+        "logo_UHzX6q",
+        "logo_PFxrAg"
       ],
       "settings": {
         "header_text": "Trusted Partners & Clients:"
