@@ -281,6 +281,12 @@
     "as_featured_on_JjNrwe": {
       "type": "as-featured-on",
       "blocks": {
+        "logo_tJWKCg": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/572b08ce-6c70-486c-a34f-13af00c4ef3b.jpg"
+          }
+        },
         "logo_8NEdh7": {
           "type": "logo",
           "settings": {
@@ -346,15 +352,10 @@
           "settings": {
             "logo": "shopify://shop_images/THinkbox-removebg-preview.png"
           }
-        },
-        "logo_PFxrAg": {
-          "type": "logo",
-          "settings": {
-            "logo": "shopify://shop_images/572b08ce-6c70-486c-a34f-13af00c4ef3b.jpg"
-          }
         }
       },
       "block_order": [
+        "logo_tJWKCg",
         "logo_8NEdh7",
         "logo_4qpbYi",
         "logo_NqCWAp",
@@ -365,8 +366,7 @@
         "logo_76wwkp",
         "logo_AYcHKH",
         "logo_jn8PDm",
-        "logo_UHzX6q",
-        "logo_PFxrAg"
+        "logo_UHzX6q"
       ],
       "settings": {
         "header_text": "Trusted Partners & Clients:"
