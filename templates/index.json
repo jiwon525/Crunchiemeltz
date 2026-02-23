@@ -41,7 +41,7 @@
       "type": "apps",
       "blocks": {
         "google_reviews_plus_app_block_CPMeGB": {
-          "type": "shopify://apps/rocket-google-reviews/blocks/app-block/d11c8893-a181-4aff-a280-7446d42cec3b",
+          "type": "shopify://apps/google-reviews-rocket/blocks/app-block/d11c8893-a181-4aff-a280-7446d42cec3b",
           "settings": {
             "widget_layout": "default"
           }
@@ -216,6 +216,12 @@
     "video_carousel_new_tab_M3XzBi": {
       "type": "video-carousel-new-tab",
       "blocks": {
+        "video_BVabjk": {
+          "type": "video",
+          "settings": {
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/385fa9c61f88435db1e40ca264222ba6.mp4"
+          }
+        },
         "video_wWxMAQ": {
           "type": "video",
           "settings": {
@@ -254,11 +260,12 @@
         "video_dTz8R4": {
           "type": "video",
           "settings": {
-            "video_url": "https://cdn.shopify.com/videos/c/o/v/cd17a0024db8409896c7fb45956e9a50.mp4"
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/d66b5ab7adcc4d8597a02648c58d46e5.mp4"
           }
         }
       },
       "block_order": [
+        "video_BVabjk",
         "video_wWxMAQ",
         "video_tHRErX",
         "video_mV49Hc",
