@@ -288,6 +288,22 @@
     "as_featured_on_JjNrwe": {
       "type": "as-featured-on",
       "blocks": {
+        "logo_RQLVJi": {
+          "type": "logo",
+          "settings": {}
+        },
+        "logo_aJm3bD": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/UOB-Logo.png"
+          }
+        },
+        "logo_nDEdMa": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/sph.png"
+          }
+        },
         "logo_tJWKCg": {
           "type": "logo",
           "settings": {
@@ -362,6 +378,9 @@
         }
       },
       "block_order": [
+        "logo_RQLVJi",
+        "logo_aJm3bD",
+        "logo_nDEdMa",
         "logo_tJWKCg",
         "logo_8NEdh7",
         "logo_4qpbYi",
@@ -377,6 +396,31 @@
       ],
       "settings": {
         "header_text": "Trusted Partners & Clients:"
+      }
+    },
+    "as_featured_on_RpGqKM": {
+      "type": "as-featured-on",
+      "blocks": {
+        "logo_iMVcaQ": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/ABOUT_US_Station_920-889x500.png"
+          }
+        },
+        "logo_TDXbWX": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/one-fm.png"
+          }
+        }
+      },
+      "block_order": [
+        "logo_iMVcaQ",
+        "logo_TDXbWX"
+      ],
+      "name": "Featured Logos Grid",
+      "settings": {
+        "header_text": ""
       }
     },
     "video_carousel_new_tab_zTKMeN": {
@@ -415,6 +459,7 @@
     "video_carousel_aQgK4L",
     "video_carousel_new_tab_M3XzBi",
     "as_featured_on_JjNrwe",
+    "as_featured_on_RpGqKM",
     "video_carousel_new_tab_zTKMeN"
   ]
 }
