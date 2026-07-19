@@ -216,10 +216,10 @@
     "video_carousel_new_tab_M3XzBi": {
       "type": "video-carousel-new-tab",
       "blocks": {
-        "video_BVabjk": {
+        "video_TKEnYe": {
           "type": "video",
           "settings": {
-            "video_url": "https://cdn.shopify.com/videos/c/o/v/385fa9c61f88435db1e40ca264222ba6.mp4"
+            "video_url": ""
           }
         },
         "video_wWxMAQ": {
@@ -265,7 +265,7 @@
         }
       },
       "block_order": [
-        "video_BVabjk",
+        "video_TKEnYe",
         "video_wWxMAQ",
         "video_tHRErX",
         "video_mV49Hc",
