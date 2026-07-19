@@ -219,42 +219,48 @@
         "video_tHRErX": {
           "type": "video",
           "settings": {
-            "video_url": "https://cdn.shopify.com/videos/c/o/v/ac21774d6b964860b238cc7cc0809ef9.mov",
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/d329a33d4e0d48be9957d9d6dc689504.mp4",
             "video_thumbnail": "shopify://shop_images/Slide2_b7181901-69ad-4388-8215-d4a70b15af7f.jpg"
           }
         },
         "video_mV49Hc": {
           "type": "video",
           "settings": {
-            "video_url": "https://cdn.shopify.com/videos/c/o/v/68fd8dc518434440a05095a8450f5817.mov",
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/a3e85f3eba69472f995838d3441678e0.mp4",
             "video_thumbnail": "shopify://shop_images/Slide3_4699ad95-e591-443c-8070-e9420fff0c0b.jpg"
           }
         },
         "video_EgLknq": {
           "type": "video",
           "settings": {
-            "video_url": "https://cdn.shopify.com/videos/c/o/v/a252542cefba454d9ccbda46beabb1eb.mov",
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/0fc96cdfc95243aaa73d7289d0aab2fa.mp4",
             "video_thumbnail": "shopify://shop_images/Slide4_a493bbd4-cd5f-4f1c-a3a6-13a5d9af3eb2.jpg"
           }
         },
         "video_wWxMAQ": {
           "type": "video",
           "settings": {
-            "video_url": "https://cdn.shopify.com/videos/c/o/v/b05443156c5e4b6cb84ce68e2ba375bc.mov",
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/06e34a8e8dc748e0a096cf08f60cd7af.mp4",
             "video_thumbnail": "shopify://shop_images/Slide1.jpg"
           }
         },
         "video_g9Xpb4": {
           "type": "video",
           "settings": {
-            "video_url": "https://cdn.shopify.com/videos/c/o/v/cb8191ff965043968d402acabe8289ab.mov",
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/357f50949b344510a91582f1a1aa78a6.mp4",
             "video_thumbnail": "shopify://shop_images/Slide5_82c19c2b-50df-4969-b747-90ed898dc335.jpg"
           }
         },
         "video_dTz8R4": {
           "type": "video",
           "settings": {
-            "video_url": "https://cdn.shopify.com/videos/c/o/v/d66b5ab7adcc4d8597a02648c58d46e5.mp4"
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/d45b5c513fbd41ae80cb454fee5ee324.mp4"
+          }
+        },
+        "video_LB7wna": {
+          "type": "video",
+          "settings": {
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/799cfe450bae4e05ac2e5be716ac5d6f.mp4"
           }
         }
       },
@@ -264,7 +270,8 @@
         "video_EgLknq",
         "video_wWxMAQ",
         "video_g9Xpb4",
-        "video_dTz8R4"
+        "video_dTz8R4",
+        "video_LB7wna"
       ],
       "name": "Video Carousel (New Tab)",
       "settings": {
