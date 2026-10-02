@@ -401,6 +401,12 @@
     "as_featured_on_RpGqKM": {
       "type": "as-featured-on",
       "blocks": {
+        "logo_rzzKPD": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/cgh.webp"
+          }
+        },
         "logo_iMVcaQ": {
           "type": "logo",
           "settings": {
@@ -415,6 +421,7 @@
         }
       },
       "block_order": [
+        "logo_rzzKPD",
         "logo_iMVcaQ",
         "logo_TDXbWX"
       ],
